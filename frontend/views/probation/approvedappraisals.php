@@ -10,7 +10,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'HRMIS - AAS Approved Appraisals';
+$this->title = 'HRMIS - Approved Appraisals';
 $this->params['breadcrumbs'][] = ['label' => 'Performance Management', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => 'Approved Appraisals List', 'url' => ['approvedappraisals']];
 ?>

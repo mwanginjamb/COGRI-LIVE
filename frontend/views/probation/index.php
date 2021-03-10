@@ -75,11 +75,9 @@ $script = <<<JS
                 { title: 'Employee Name' ,data: 'Employee_Name'},
                 { title: 'Level Grade' ,data: 'Level_Grade'},
                 { title: 'Job Title' ,data: 'Job_Title'},
-                { title: 'Appraisal Period' ,data: 'Appraisal_Period'},
-                { title: 'Supervisor User Id' ,data: 'Supervisor_User_Id'},
-                { title: 'Employee User Id' ,data: 'Employee_User_Id'},
-                { title: 'Hr UserId' ,data: 'Hr_UserId'},
-               
+                { title: 'Appraisal Start Date' ,data: 'Appraisal_Start_Date'},
+                { title: 'Appraisal End Date' ,data: 'Appraisal_End_Date'},
+                               
                 { title: 'Action', data: 'Action' },
                 
                
@@ -88,14 +86,14 @@ $script = <<<JS
                 "zeroRecords": "No Probation Appraisals to display"
             },
             
-            order : [[ 6, "desc" ]]
+            order : [[ 0, "desc" ]]
             
            
        });
         
        //Hidding some 
        var table = $('#appraisal').DataTable();
-       //table.columns([0,6]).visible(false);
+       table.columns([3]).visible(false);
     
     /*End Data tables*/
         $('#appraisal').on('click','tr', function(){

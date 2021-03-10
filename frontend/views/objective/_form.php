@@ -42,6 +42,7 @@ use yii\widgets\ActiveForm;
 
                                     <?= $form->field($model, 'Employee_No')->hiddenInput()->label(false) ?>
                                     <?= $form->field($model, 'Objective')->textarea(['rows' => '3']) ?>
+                                    <?= $form->field($model, 'Maximum_Weight')->textInput(['type' => 'number']) ?>
                                     <?= (Yii::$app->session->get('New_Emp_App_Status') == 'Appraisee_Level')?$form->field($model, 'New_Emp_Self_Rating')->textInput(['type' => 'number']):'' ?>
                                     <?= (Yii::$app->session->get('New_Emp_App_Status') == 'Appraisee_Level')?$form->field($model, 'New_Emp_Comments')->textarea(['rows' => 3,'maxlength' => 250]):'' ?>
                                     <?= (Yii::$app->session->get('New_Emp_App_Status') == 'Supervisor_Level')?$form->field($model, 'New_Emp_Supervisor_Rating')->textInput(['type' => 'number']):'' ?>

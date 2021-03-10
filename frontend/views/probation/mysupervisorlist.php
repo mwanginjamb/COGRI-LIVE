@@ -10,7 +10,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'HRMIS - AAS Mid Year Appraisal List: Supervisor';
+$this->title = 'HRMIS -  Mid Year Appraisal List: Supervisor';
 $this->params['breadcrumbs'][] = ['label' => 'Performance Management', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => 'Mid Year Appraisal List (Supervisor)', 'url' => ['index']];
 ?>

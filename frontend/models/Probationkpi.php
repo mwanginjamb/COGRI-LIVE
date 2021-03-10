@@ -10,21 +10,27 @@ namespace frontend\models;
 use yii\base\Model;
 
 
-class Objective extends Model
+class Probationkpi extends Model
 {
-public $Line_No;
 public $Appraisal_No;
 public $Employee_No;
 public $Objective;
-public $New_Emp_Self_Rating;
-public $New_Emp_Comments;
-public $New_Emp_Supervisor_Rating;
-public $New_Emp_Supervisor_Comment;
-public $New_Emp_Hr_Rating;
-public $New_Emp_Hr_Comments;
-public $Overall_Rating;
-public $Total_Weigth;
-public $Maximum_Weight;
+public $Weight;
+public $Appraisee_Self_Rating;
+public $Employee_Comments;
+public $Appraiser_Rating;
+public $Supervisor_Comments;
+public $Agree;
+public $Disagreement_Comments;
+public $Appraisee_Self_Rating_Ex;
+public $Appraiser_Rating_Ex;
+public $Agree_Ex;
+public $Disagreement_Comments_Ex;
+public $Employee_Comments_Ex;
+public $End_Year_Supervisor_Comments_E;
+public $KRA_Line_No;
+public $Overview_Manager_Comments;
+public $Line_No;
 public $Key;
 public $isNewRecord;
 
@@ -43,7 +49,10 @@ public $isNewRecord;
             'New_Emp_Supervisor_Rating' => 'Supervisor Rating',
             'New_Emp_Supervisor_Comment' => 'Supervisor Comment',
             'New_Emp_Hr_Rating' => 'HR Rating',
-            'New_Emp_Hr_Comments' => 'HR Comments'
+            'New_Emp_Hr_Comments' => 'HR Comments',
+            'End_Year_Supervisor_Comments_E' => 'Supervisor Extension Comments'
         ];
     }
+
+
 }

@@ -19,17 +19,29 @@ public $Key;
 public $Appraisal_No;
 public $Employee_No;
 public $Employee_Name;
-public $Job_Title;
-public $Appraisal_Period;
-public $Appraisal_Start_Date;
-public $Created_By;
-public $Supervisor_User_Id;
 public $Employee_User_Id;
+public $Level_Grade;
+public $Job_Title;
+public $Goal_Setting_Status;
+public $Appraisal_Status;
 public $Supervisor_No;
-public $Hr_UserId;
-public $New_Employee_App_Objectives;
-public $New_Emp_App_Status;
-public $Action_Taken;
+public $Supervisor_Name;
+public $Supervisor_User_Id;
+public $Overview_Manager;
+public $Overview_Manager_Name;
+public $Overview_Manager_UserID;
+public $Probation_Recomended_Action;
+public $Over_View_Manager_Comments;
+
+public $Overall_Score;
+
+public $Probation_Start_Date;
+public $Probation_End_date;
+public $Overview_Rejection_Comments;
+public $Supervisor_Rejection_Comments;
+
+public $Global_Dimension_1_Code;
+public $Global_Dimension_2_Code;
 
     public function rules()
     {
@@ -42,34 +54,58 @@ public $Action_Taken;
     {
         return [
 
+            'Probation_Start_Date' => 'Appraisal Start Date',
+            'Probation_End_date' => 'Appraisal End Date',
+            'Global_Dimension_1_Code' => 'Program',
+            'Global_Dimension_2_Code' => 'Department'
 
 
         ];
     }
 
     public function getObjectives(){
-        $service = Yii::$app->params['ServiceName']['NewEmpObjectives'];
+        $service = Yii::$app->params['ServiceName']['ProbationKRAs'];
         $filter = [
             'Appraisal_No' => $this->Appraisal_No,
-            'Employee_No' => $this->Employee_No
         ];
 
         $objectives = Yii::$app->navhelper->getData($service, $filter);
         return $objectives;
     }
 
+    public function getKpi($KRA_Line_No){
+        $service = Yii::$app->params['ServiceName']['ProbationKPIs'];
+        $filter = [
+            'KRA_Line_No' => $KRA_Line_No,
+        ];
+
+        $result = Yii::$app->navhelper->getData($service, $filter);
+        return $result;
+    }
+
 
 
     //get supervisor status
 
-    public function isSupervisor($Employee_User_Id,$Supervisor_User_Id)
+    public function isSupervisor()
     {
 
-        $user = Yii::$app->user->identity->getId();
-
-        return ($user == $Supervisor_User_Id);
+        return (Yii::$app->user->identity->{'Employee_No'} == $this->Supervisor_No);
 
     }
+
+    public function isOverview()
+    {
+
+        return (Yii::$app->user->identity->{'Employee_No'} == $this->Overview_Manager);
+
+    }
+
+    public function isAppraisee()
+    {
+        return (Yii::$app->user->identity->{'Employee_No'} == $this->Employee_No);
+    }
+
 
 
 }

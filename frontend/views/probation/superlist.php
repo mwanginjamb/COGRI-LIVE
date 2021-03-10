@@ -10,7 +10,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'KEMRI - New Employee Probation List';
+$this->title = 'HRMIS - New Employee Probation List';
 $this->params['breadcrumbs'][] = ['label' => 'Performance Management', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => 'Probation Appraisal List', 'url' => ['index']];
 ?>

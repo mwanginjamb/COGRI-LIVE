@@ -199,12 +199,30 @@ return [
 
 
 
-        'ProbationCard' => 'ProbationCard', // 60042
-        'ProbationList' => 'ProbationList', // 60043
-        'ProbationSupervisorList' => 'ProbationSupervisorList', //60044
-        'Probationhrlist' => 'Probationhrlist', //60045
-        'closedprobationappraisals' => 'closedprobationappraisals', //60046
+        //'ProbationCard' => 'ProbationCard', // 60042
+        //'ProbationList' => 'ProbationList', // 60043
+        //'ProbationSupervisorList' => 'ProbationSupervisorList', //60044
+        //'Probationhrlist' => 'Probationhrlist', //60045
+        //'closedprobationappraisals' => 'closedprobationappraisals', //60046
         'NewEmpObjectives' => 'NewEmpObjectives', //60047
+
+        /*Probation Appraisal*/
+
+        'ObjectiveSettingList' => 'ObjectiveSettingList', // 60064
+        'ProbationCard' => 'ProbationCard', //60065
+        'LnManagerObjList' => 'LnManagerObjList',//60066
+        'ProbationOverviewObjList' => 'ProbationOverviewObjList', // 60067
+        'ProbationAppraiseeList' => 'ProbationAppraiseeList', // 60068
+        'ProbationLnmanagerList' => 'ProbationLnmanagerList',// 60069
+        'ProbationAgreementList' => 'ProbationAgreementList', //60071
+        'OverviewSupervisorList' => 'OverviewSupervisorList', //60070
+        'ClosedProbationAppraisal' => 'ClosedProbationAppraisal', //60072
+        'ProbationKRAs' => 'ProbationKRAs', //60002 --> Just Uses Objectives structure (NewEmpObjectives)
+        'ProbationKPIs' => 'ProbationKPIs', //60003
+
+
+
+
 
         'AppraisalWorkflow' => 'AppraisalWorkflow', // 50228 ---> Code Unit
         'PerformanceLevel' => 'PerformanceLevel',//60037 page

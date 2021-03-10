@@ -100,6 +100,8 @@ public $Manager;
 public $Is_Long_Term;
 
 public $Employee_Category;
+public $EFT_Format;
+public $Overview_Manager;
 
     public function rules()
     {

@@ -86,9 +86,9 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
                         <i class="far fa-comments"></i>
                         <span class="badge badge-danger navbar-badge">3</span>
                     </a> -->
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <!--<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
+                            <!-- Message Start 
                             <div class="media">
                                 <img src="<?= $webroot ?>/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                                 <div class="media-body">
@@ -100,11 +100,11 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
                                     <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
                                 </div>
                             </div>
-                            <!-- Message End -->
+                            <!-- Message End 
                         </a>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
+                            <!-- Message Start --
                             <div class="media">
                                 <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
@@ -116,11 +116,11 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
                                     <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
                                 </div>
                             </div>
-                            <!-- Message End -->
+                            <!-- Message End --
                         </a>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
+                            <!-- Message Start --
                             <div class="media">
                                 <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
@@ -132,11 +132,11 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
                                     <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
                                 </div>
                             </div>
-                            <!-- Message End -->
+                            <!-- Message End --
                         </a>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                    </div>
+                    </div>--> <!--End Messages dropdown----------------->
                 </li>
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
@@ -405,14 +405,14 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
                         <!--payroll reports-->
 
 
-
+<!--
                         <li class="nav-item has-treeview <?= Yii::$app->recruitment->currentCtrl('appraisal')?'menu-open':'' ?>">
                             <a href="#" title="Performance Management" class="nav-link <?= Yii::$app->recruitment->currentCtrl('appraisal')?'active':'' ?>">
                                 <i class="nav-icon fa fa-balance-scale"></i>
                                 <p>
                                     Perfomance Mgt.
                                     <i class="fas fa-angle-left right"></i>
-                                    <!--<span class="badge badge-info right">6</span>-->
+                                    <!--<span class="badge badge-info right">6</span>--
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -447,18 +447,18 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
                                     </li>
                                 <?php endif; ?>
 
-                                <!--Mid Year Appraisals-->
+                                <!--Mid Year Appraisals--
                                 <li class="nav-item has-treeview <?= Yii::$app->recruitment->currentCtrl('appraisal')?'menu-open':'' ?>">
                                     <a href="#" class="nav-link <?= Yii::$app->recruitment->currentCtrl('appraisal')?'active':'' ?>">
                                         <i class="nav-icon fa fa-balance-scale"></i>
                                         <p>
                                             Mid Year Appraisals
                                             <i class="fas fa-angle-left right"></i>
-                                            <!--<span class="badge badge-info right">6</span>-->
+                                            <!--<span class="badge badge-info right">6</span>--
                                         </p>
                                     </a>
 
-                                    <ul class="nav nav-treeview"><!--Mid Year Appraisals Menu-->
+                                    <ul class="nav nav-treeview"><!--Mid Year Appraisals Menu--
 
                                         <li class="nav-item">
                                             <a href="<?= $absoluteUrl ?>appraisal/myappraiseelist" class="nav-link <?= Yii::$app->recruitment->currentaction('appraisal','myappraiseelist')?'active':'' ?>">
@@ -504,18 +504,18 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
 
                                 </li><!--End Mid Year Child Menu list-->
 
-                                <!--end Year Appraisals -->
+                                <!--end Year Appraisals --
                                 <li class="nav-item has-treeview <?= Yii::$app->recruitment->currentCtrl('appraisal')?'menu-open':'' ?>">
                                     <a href="#" class="nav-link <?= Yii::$app->recruitment->currentCtrl('appraisal')?'active':'' ?>">
                                         <i class="nav-icon fa fa-balance-scale"></i>
                                         <p>
                                             End Year Appraisals
                                             <i class="fas fa-angle-left right"></i>
-                                            <!--<span class="badge badge-info right">6</span>-->
+                                            <!--<span class="badge badge-info right">6</span>--
                                         </p>
                                     </a>
 
-                                    <ul class="nav nav-treeview"><!--Mid Year Appraisals Menu-->
+                                    <ul class="nav nav-treeview"><!--Mid Year Appraisals Menu--
 
 
                                         <li class="nav-item">
@@ -581,7 +581,7 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
                                     </ul><!--End Mid Year Appraisals menu list-->
 
 
-                                </li><!--/ End Year Child Menu list-->
+                                </li><!--/ End Year Child Menu list--
 
 
 
@@ -595,12 +595,87 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
 
                             </ul>
                         </li>
+                    -->
 
 
 
                         <!-- Start Probation Appraisal -->
 
+                        <li class="nav-item has-treeview <?= Yii::$app->recruitment->currentCtrl('probation')?'menu-open':'' ?>">
+                            <a href="#" title="Performance Management" class="nav-link <?= Yii::$app->recruitment->currentCtrl('appraisal')?'active':'' ?>">
+                                <i class="nav-icon fa fa-balance-scale"></i>
+                                <p>
+                                    Performance Mgt.
+                                    <i class="fas fa-angle-left right"></i>
+                                    <!--<span class="badge badge-info right">6</span>-->
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
 
+
+                                <li class="nav-item">
+                                    <a href="<?= $absoluteUrl ?>probation" class="nav-link <?= Yii::$app->recruitment->currentaction('probation','index')?'active':'' ?>">
+                                        <i class="fa fa-check-square nav-icon"></i>
+                                        <p> Objective Setting</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="<?= $absoluteUrl ?>probation/superglist" class="nav-link <?= Yii::$app->recruitment->currentaction('probation','superglist')?'active':'' ?>">
+                                        <i class="fa fa-check-square nav-icon"></i>
+                                        <p> Supervisor Goals List</p>
+                                    </a>
+                                </li>
+
+
+
+                                <li class="nav-item">
+                                    <a href="<?= $absoluteUrl ?>probation/ovglist" class="nav-link <?= Yii::$app->recruitment->currentaction('probation','ovglist')?'active':'' ?>">
+                                        <i class="fa fa-check-square nav-icon"></i>
+                                        <p> Overview Goals List</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="<?= $absoluteUrl ?>probation/approvedglist" class="nav-link <?= Yii::$app->recruitment->currentaction('probation','approvedglist')?'active':'' ?>">
+                                        <i class="fa fa-check-square nav-icon"></i>
+                                        <p> Approved Goals List</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="<?= $absoluteUrl ?>probation/superproblist" class="nav-link <?= Yii::$app->recruitment->currentaction('probation','superproblist')?'active':'' ?>">
+                                        <i class="fa fa-check-square nav-icon"></i>
+                                        <p> Supervisor Probation List</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="<?= $absoluteUrl ?>probation/ovproblist" class="nav-link <?= Yii::$app->recruitment->currentaction('probation','ovproblist')?'active':'' ?>">
+                                        <i class="fa fa-check-square nav-icon"></i>
+                                        <p> Overview Probation List</p>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="<?= $absoluteUrl ?>probation/agreementlist" class="nav-link <?= Yii::$app->recruitment->currentaction('probation','agreementlist')?'active':'' ?>">
+                                        <i class="fa fa-check-square nav-icon"></i>
+                                        <p> Agreement List</p>
+                                    </a>
+                                </li>
+
+                                 <li class="nav-item">
+                                    <a href="<?= $absoluteUrl ?>probation/closedlist" class="nav-link <?= Yii::$app->recruitment->currentaction('probation','closedlist')?'active':'' ?>">
+                                        <i class="fa fa-check-square nav-icon"></i>
+                                        <p> Closed List</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+
+                        </li>
 
                         <!---End Probationary Appraisal -->
 

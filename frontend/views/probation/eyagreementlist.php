@@ -10,7 +10,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'HRMIS - AAS End Year Appraisal List: Agreement';
+$this->title = 'HRMIS -  End Year Appraisal List: Agreement';
 $this->params['breadcrumbs'][] = ['label' => 'Performance Management', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => 'End Year Appraisal List ( Agreement )', 'url' => ['index']];
 ?>
