@@ -67,6 +67,7 @@ public $Global_Dimension_2_Code;
         $service = Yii::$app->params['ServiceName']['ProbationKRAs'];
         $filter = [
             'Appraisal_No' => $this->Appraisal_No,
+            'Employee_No' => $this->Employee_No
         ];
 
         $objectives = Yii::$app->navhelper->getData($service, $filter);
@@ -77,6 +78,8 @@ public $Global_Dimension_2_Code;
         $service = Yii::$app->params['ServiceName']['ProbationKPIs'];
         $filter = [
             'KRA_Line_No' => $KRA_Line_No,
+            'Appraisal_No' => $this->Appraisal_No,
+            'Employee_No' => $this->Employee_No
         ];
 
         $result = Yii::$app->navhelper->getData($service, $filter);

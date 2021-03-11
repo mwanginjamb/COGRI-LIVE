@@ -181,12 +181,16 @@ $script = <<<JS
         const Weight = e.target.value;
         const Appraisal_No = $('#probationkpi-appraisal_no').val();
         const Line_No = $('#probationkpi-line_no').val();
+        const Objective = $('#probationkpi-objective').val();
+        const Employee_No = $('#probationkpi-employee_no').val();
+        const KRA_Line_No = $('#probationkpi-kra_line_no').val();
+        const Key = $('#probationkpi-key').val();
 
 
         if(Appraisal_No.length){
             
             const url = $('input[name=url]').val()+'probation-kpi/setweight';
-            $.post(url,{'Weight': Weight,'Appraisal_No': Appraisal_No,'Line_No': Line_No}).done(function(msg){
+            $.post(url,{'Weight': Weight,'Appraisal_No': Appraisal_No,'Line_No': Line_No, 'Objective': Objective,'Employee_No': Employee_No,'KRA_Line_No': KRA_Line_No,'Key': Key  }).done(function(msg){
                    //populate empty form fields with new data
                    
                   
@@ -215,23 +219,26 @@ $script = <<<JS
         }     
      });
 
-     /*Set Objective*/
+     /* Set Objective */
 
         $('#probationkpi-objective').change(function(e){
 
         const Objective = e.target.value;
+        const Appraisal_No = $('#probationkpi-appraisal_no').val();
+        const Employee_No = $('#probationkpi-employee_no').val();
+        const KRA_Line_No = $('#probationkpi-kra_line_no').val();
       
 
         if(Objective.length){
             
             const url = $('input[name=url]').val()+'probation-kpi/setkpi';
-            $.post(url,{'Objective': Objective}).done(function(msg){
+            $.post(url,{'Objective': Objective, 'Appraisal_No': Appraisal_No, 'Employee_No': Employee_No, 'KRA_Line_No': KRA_Line_No}).done(function(msg){
                    //populate empty form fields with new data
                    
                   
                    $('#probationkpi-key').val(msg.Key);
                    $('#probationkpi-line_no').val(msg.Line_No);
-                  
+                                    
 
                     console.log(typeof msg);
                     console.table(msg);
@@ -253,7 +260,7 @@ $script = <<<JS
                 },'json');
             
         }     
-     });
+     }); 
 
 
       function disableSubmit(){

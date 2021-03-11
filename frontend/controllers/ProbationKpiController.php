@@ -78,7 +78,7 @@ class ProbationKpiController extends Controller
         if(Yii::$app->request->post() && Yii::$app->navhelper->loadpost(Yii::$app->request->post()['Probationkpi'],$model)  && $model->validate() ){
 
 
-            $result = Yii::$app->navhelper->postData($service,$model);
+            $result = Yii::$app->navhelper->updateData($service,$model);
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             if(is_object($result)){
 
@@ -112,16 +112,12 @@ class ProbationKpiController extends Controller
         $model = new Probationkpi();
         $service = Yii::$app->params['ServiceName']['ProbationKPIs'];
 
-        $filter = [
-            'Line_No' => Yii::$app->request->post('Line_No')
-        ];
-        $request = Yii::$app->navhelper->getData($service, $filter);
-
-        if(is_array($request)){
-            Yii::$app->navhelper->loadmodel($request[0],$model,['Line_No']);
-            $model->Key = $request[0]->Key;
-            $model->Weight = Yii::$app->request->post('Weight');
-        }
+        $model->Weight = Yii::$app->request->post('Weight');
+        $model->Objective = Yii::$app->request->post('Objective');
+        $model->Appraisal_No = Yii::$app->request->post('Appraisal_No');
+        $model->Employee_No = Yii::$app->request->post('Employee_No');
+        $model->KRA_Line_No = Yii::$app->request->post('KRA_Line_No');
+        $model->Key = Yii::$app->request->post('Key');
 
 
         $result = Yii::$app->navhelper->updateData($service,$model);
@@ -142,6 +138,10 @@ class ProbationKpiController extends Controller
         /*Do initial request*/
         
         $model->Objective = Yii::$app->request->post('Objective');
+        $model->Appraisal_No = Yii::$app->request->post('Appraisal_No');
+        $model->Employee_No = Yii::$app->request->post('Employee_No');
+        $model->KRA_Line_No = Yii::$app->request->post('KRA_Line_No');
+
         $request = Yii::$app->navhelper->postData($service, $model);
         Yii::$app->response->format = \yii\web\response::FORMAT_JSON;
         return $request; 
@@ -168,8 +168,8 @@ class ProbationKpiController extends Controller
             Yii::$app->recruitment->printrr($result);
         }
 
-
-        if(Yii::$app->request->post() && Yii::$app->navhelper->loadpost(Yii::$app->request->post()['Probationkpi'],$model) && $model->validate() ){
+        //  Yii::$app->navhelper->loadpost(Yii::$app->request->post()['Probationkpi'],$model)
+        if(Yii::$app->request->post() && $model->load(Yii::$app->request->post()['Probationkpi'], '') && $model->validate() ){
             $result = Yii::$app->navhelper->updateData($service,$model);
 
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
