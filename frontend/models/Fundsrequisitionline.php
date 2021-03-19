@@ -59,7 +59,9 @@ public $isNewRecord;
         return [
             'Global_Dimension_1_Code' => 'Program',
             'Global_Dimension_2_Code' => 'Department',
-            'Sortcut_Dimension_3_Code' => 'Student'
+            'Sortcut_Dimension_3_Code' => 'Student',
+            'Child_Rate' => 'Rate',
+            'No_of_Children' => 'Quantity',
         ];
     }
 }

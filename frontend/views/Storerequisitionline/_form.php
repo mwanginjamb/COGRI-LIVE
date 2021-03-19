@@ -23,7 +23,7 @@ $absoluteUrl = \yii\helpers\Url::home(true);
                 <div class="row">
 
 
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                     <?= $form->field($model, 'Requisition_No')->textInput(['readonly' => true]) ?>
                                     <?= $form->field($model, 'No')->dropDownList($items, ['prompt' => 'Select Item...']) ?>
                                     <?= $form->field($model, 'Location')->dropDownList($locations, ['prompt' => 'Select Location...']) ?>
@@ -31,6 +31,16 @@ $absoluteUrl = \yii\helpers\Url::home(true);
                                     <?= $form->field($model, 'Key')->hiddenInput(['readonly'=> true])->label(false) ?>
                                     <?= $form->field($model, 'Line_No')->hiddenInput(['readonly'=> true, 'disabled' => true])->label(false) ?>
                                     <?= $form->field($model, 'Available_Quantity')->textInput(['readonly'=> true,'disabled' => true]); ?>
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <?= $form->field($model, 'Global_Dimension_1_Code')->dropDownList($programs, ['prompt' => 'Select ...']) ?>
+
+                                 <?= $form->field($model, 'Global_Dimension_2_Code')->dropDownList($departments, ['prompt' => 'Select ...']) ?>
+
+                                <?= $form->field($model, 'ShortcutDimCode_x005B_3_x005D_')->dropDownList($students, ['prompt' => 'Select ...']) ?>
 
                             </div>
 
@@ -65,6 +75,14 @@ $absoluteUrl = \yii\helpers\Url::home(true);
 <input type="hidden" name="absolute" value="<?= $absoluteUrl ?>">
 <?php
 $script = <<<JS
+
+
+
+$('#storerequisitionline-global_dimension_1_code').select2();
+$('#storerequisitionline-global_dimension_2_code').select2();
+$('#storerequisitionline-shortcutdimcode_x005b_3_x005d_').select2();
+
+
  //Submit Rejection form and get results in json    
         $('form').on('submit', function(e){
             e.preventDefault()

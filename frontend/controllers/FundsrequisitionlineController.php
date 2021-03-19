@@ -101,7 +101,7 @@ class FundsrequisitionlineController extends Controller
         }
         // Yii::$app->navhelper->loadpost(Yii::$app->request->post()['Fundsrequisitionline'],$model)
 
-        if(Yii::$app->request->post()  && $model->load(Yii::$app->request->post()) ){
+        if(Yii::$app->request->post()  && Yii::$app->navhelper->loadpost(Yii::$app->request->post()['Fundsrequisitionline'],$model) ){
 
 
              $refresh = Yii::$app->navhelper->getData($service,[

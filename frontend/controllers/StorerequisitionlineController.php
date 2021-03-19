@@ -109,6 +109,9 @@ class StorerequisitionlineController extends Controller
                 'model' => $model,
                 'locations' => $this->getLocations(),
                 'items' => $this->getItems(),
+                'programs' => $this->getPrograms(),
+                'departments' => $this->getDepartments(),
+                'students' => $this->getStudent(),
             ]);
         }
 
@@ -161,6 +164,9 @@ class StorerequisitionlineController extends Controller
                 'model' => $model,
                 'locations' => $this->getLocations(),
                 'items' => $this->getItems(),
+                'programs' => $this->getPrograms(),
+                'departments' => $this->getDepartments(),
+                'students' => $this->getStudent(),
             ]);
         }
 
@@ -168,6 +174,9 @@ class StorerequisitionlineController extends Controller
             'model' => $model,
             'locations' => $this->getLocations(),
             'items' => $this->getItems(),
+            'programs' => $this->getPrograms(),
+            'departments' => $this->getDepartments(),
+            'students' => $this->getStudent(),
         ]);
     }
 
@@ -180,6 +189,59 @@ class StorerequisitionlineController extends Controller
         }else{
             return ['note' => '<div class="alert alert-danger">Error Purging Record: '.$result.'</div>' ];
         }
+    }
+
+    /*Get Programs */
+
+    public function getPrograms(){
+        $service = Yii::$app->params['ServiceName']['DimensionValueList'];
+
+        $filter = [
+            'Global_Dimension_No' => 1
+        ];
+
+        $result = \Yii::$app->navhelper->getData($service, $filter);
+       // return ArrayHelper::map($result,'Code','Name');
+        return Yii::$app->navhelper->refactorArray($result,'Code','Name');
+    }
+
+    /* Get Department*/
+
+    public function getDepartments(){
+       $service = Yii::$app->params['ServiceName']['DimensionValueList'];
+
+        $filter = [
+            'Global_Dimension_No' => 2
+        ];
+        $result = \Yii::$app->navhelper->getData($service, $filter);
+        // return ArrayHelper::map($result,'Code','Name');
+        return Yii::$app->navhelper->refactorArray($result,'Code','Name');
+    }
+
+    /* Get Dimension 3*/
+
+    public function getStudent(){
+         $service = Yii::$app->params['ServiceName']['DimensionValueList'];
+
+        $filter = [
+            'Global_Dimension_No' => 3
+        ];
+        $result = \Yii::$app->navhelper->getData($service, $filter);
+        //return ArrayHelper::map($result,'Code','Name');
+        //return Yii::$app->navhelper->refactorArray($result,'Code','Name');
+        $arr = [];
+        $i = 0;
+        foreach($result as $res){
+            if(!empty($res->Code) && !empty($res->Name)){
+                ++$i;
+                $arr[$i] = [
+                    'Code' => $res->Code,
+                    'Name' => $res->Name.' - '.$res->Code
+                ];
+            }
+        }
+
+        return ArrayHelper::map($arr,'Code','Name');
     }
 
     public function actionSetquantity(){

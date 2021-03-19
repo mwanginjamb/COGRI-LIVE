@@ -145,9 +145,11 @@ class StorerequisitionController extends Controller
                 return $this->redirect(['view','No' => $result->No]);
 
             }else{
-                Yii::$app->session->setFlash('success','Error Updating Document'.$result );
+                Yii::$app->session->setFlash('error','Error '.$result );
                 return $this->render('update',[
                     'model' => $model,
+                    'programs' => $this->getPrograms(),
+                    'departments' => $this->getDepartments(),
                 ]);
 
             }

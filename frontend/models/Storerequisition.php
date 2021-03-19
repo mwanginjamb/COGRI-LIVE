@@ -25,6 +25,11 @@ public $Global_Dimension_3_Code;
 public $Status;
 public $Posting_Date;
 public $Approval_Entries;
+
+public $Cluster;
+public $House;
+public $Grand_Parent;
+
 public $isNewRecord;
 
     /*public function __construct(array $config = [])

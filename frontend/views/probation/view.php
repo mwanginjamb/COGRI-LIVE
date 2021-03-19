@@ -58,7 +58,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                                 <div class="col-md-4">
 
                                     <?= Html::a('<i class="fas fa-forward"></i> submit',['submit','appraisalNo'=> $model->Appraisal_No,'employeeNo' => $model->Employee_No],['class' => 'btn btn-app submitforapproval','data' => [
-                                            'confirm' => 'Are you sure you want to submit this probation appraisal to supervisor ?',
+                                            'confirm' => 'Are you sure you want to submit this appraisal to supervisor ?',
                                             'method' => 'post',
                                         ],
                                         'title' => 'Submit KRAs to Line Manager.'
@@ -119,7 +119,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                                 'confirm' => 'Are you sure you want to approve goals ?',
                                 'method' => 'post',
                             ],
-                                'title' => 'Approve Set Probation Goals .'
+                                'title' => 'Approve Set Goals .'
                             ]) ?>
 
                         </div>
@@ -136,10 +136,10 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                                 [
 
                                 'class' => 'mx-1 btn btn-app submitforapproval','data' => [
-                                'confirm' => 'Are you sure you want to Submit Probation Appraisal to Line Manager ?',
+                                'confirm' => 'Are you sure you want to Submit Appraisal to Line Manager ?',
                                 'method' => 'post',
                             ],
-                                'title' => 'Submit Probation to Line Manager.'
+                                'title' => 'Submit to Line Manager.'
                             ]) ?>
 
                         </div>
@@ -158,7 +158,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                                     'class' => 'btn btn-app bg-danger rejectappraiseesubmition',
                                     'rel' => $_GET['Appraisal_No'],
                                     'rev' => $_GET['Employee_No'],
-                                    'title' => 'Submit Probation  Back to Appraisee'
+                                    'title' => 'Submit  Back to Appraisee'
 
                             ]) ?>
 
@@ -169,10 +169,10 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                                 [
 
                                 'class' => 'mx-1 btn btn-app submitforapproval','data' => [
-                                'confirm' => 'Are you sure you want to Submit Probation Appraisal to Overview Manager ?',
+                                'confirm' => 'Are you sure you want to Submit Appraisal to Overview Manager ?',
                                 'method' => 'post',
                             ],
-                                'title' => 'Submit Probation to Overview Manager.'
+                                'title' => 'Submit to Overview Manager.'
                             ]) ?>
 
 
@@ -193,7 +193,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                                     'class' => 'mx-1 btn btn-app bg-danger Overviewbacktolinemgr',
                                     'rel' => $_GET['Appraisal_No'],
                                     'rev' => $_GET['Employee_No'],
-                                    'title' => 'Send Probation Appraisal Back to Line Manager'
+                                    'title' => 'Send Appraisal Back to Line Manager'
 
                             ]) ?>
 
@@ -208,7 +208,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                                 'confirm' => 'Are you sure you want to approve goals ?',
                                 'method' => 'post',
                             ],
-                                'title' => 'Approve Probation Appraisal.'
+                                'title' => 'Approve  Appraisal.'
                             ]) ?>
 
                         </div>
@@ -225,10 +225,10 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                         <div class="col-md-4">
 
                             <?= Html::a('<i class="fas fa-forward"></i> Approve',['close','appraisalNo'=> $_GET['Appraisal_No'],'employeeNo' => $_GET['Employee_No']],['class' => 'btn bg-success btn-app submitforapproval','data' => [
-                                'confirm' => 'Are you sure you want to approve this probation appraisal?',
+                                'confirm' => 'Are you sure you want to approve this appraisal?',
                                 'method' => 'post',
                             ],
-                                'title' => 'Approve and Close Probation Appraisal.'
+                                'title' => 'Approve and Close Appraisal.'
 
                             ]) ?>
                         </div>
@@ -238,10 +238,10 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                         <div class="col-md-4">
 
                             <?= Html::a('<i class="fas fa-backward"></i> Send Back',['backtosuper','appraisalNo'=> $_GET['Appraisal_No'],'employeeNo' => $_GET['Employee_No']],['class' => 'btn btn-app bg-danger submitforapproval','data' => [
-                                'confirm' => 'Are you sure you want to send back this probation appraisal to supervisor ?',
+                                'confirm' => 'Are you sure you want to send back this appraisal to supervisor ?',
                                 'method' => 'post',
                             ],
-                                'title' => 'Send Probation Appraisal Back to Supervisor.'
+                                'title' => 'Send Appraisal Back to Supervisor.'
 
                             ]) ?>
                         </div>
@@ -353,27 +353,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                   <div class="row">
                         <div class="col-md-6">
                              <?php if($model->Appraisal_Status == 'Supervisor_Level' || $model->Appraisal_Status == 'Overview_Manager' || $model->Appraisal_Status == 'Closed'): ?>
-                                        <div class="card">
-
-                                            <div class="card-header">
-                                                <div class="card-title">
-                                                    Recommended Action
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                 <?= ($model->Appraisal_Status == 'Supervisor_Level') ?$form->field($model, 'Probation_Recomended_Action')->dropDownList(
-                                                    [
-                                                        '_blank_' => '_blank_',
-                                                        'Confirm' => 'Confirm',
-                                                        'Extend_Probation' => 'Extend_Probation',
-                                                        'Terminate_Employee' => 'Terminate_Employee'
-                                                    ],['prompt' => 'Select ...']
-                                                   ): '' ?>
-
-
-                                                    <?= ($model->Appraisal_Status == 'Overview_Manager' || $model->Appraisal_Status == 'Appraisee_Level' || $model->Appraisal_Status == 'Closed') ?$form->field($model, 'Probation_Recomended_Action')->textInput(['readonly' => true]): '' ?>
-                                            </div>
-                                        </div>
+                                        
                             <?php endif; ?>
                         </div>
                         <div class="col-md-6">

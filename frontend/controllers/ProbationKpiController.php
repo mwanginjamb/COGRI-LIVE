@@ -169,7 +169,7 @@ class ProbationKpiController extends Controller
         }
 
         //  Yii::$app->navhelper->loadpost(Yii::$app->request->post()['Probationkpi'],$model)
-        if(Yii::$app->request->post() && $model->load(Yii::$app->request->post()['Probationkpi'], '') && $model->validate() ){
+        if(Yii::$app->request->post() && Yii::$app->navhelper->loadpost(Yii::$app->request->post()['Probationkpi'],$model) && $model->validate() ){
             $result = Yii::$app->navhelper->updateData($service,$model);
 
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;

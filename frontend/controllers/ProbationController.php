@@ -143,11 +143,11 @@ class ProbationController extends Controller
             $result = Yii::$app->navhelper->postData($service,$data);
 
             if(!is_string($result)){
-                Yii::$app->session->setFlash('success','Probation Appraisal Initiated successfully.',true);
+                Yii::$app->session->setFlash('success','Appraisal Initiated successfully.',true);
                 return $this->redirect(['view','Employee_No' => $result->Employee_No, 'Appraisal_No' => $result->Appraisal_No]);
 
             }else{
-                Yii::$app->session->setFlash('error','Error Creating Probation Appraisal: '.$result,true);
+                Yii::$app->session->setFlash('error','Error Creating Appraisal: '.$result,true);
                return $this->redirect(['index']);
 
             }
@@ -664,11 +664,11 @@ class ProbationController extends Controller
         $result = Yii::$app->navhelper->CodeUnit($service,$data,'IanSendGoalSettingForApproval');
 
         if(!is_string($result)){
-            Yii::$app->session->setFlash('success', 'Probation Appraisal Submitted Successfully.', true);
+            Yii::$app->session->setFlash('success', 'Appraisal Submitted Successfully.', true);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
         }else{
 
-            Yii::$app->session->setFlash('error', 'Error Submitting Probation Appraisal : '. $result);
+            Yii::$app->session->setFlash('error', 'Error Submitting Appraisal : '. $result);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
 
         }
@@ -693,7 +693,7 @@ class ProbationController extends Controller
         $result = Yii::$app->navhelper->CodeUnit($service,$data,'IanSendEYAppraisalToAgreementLevel');
 
         if(!is_string($result)){
-            Yii::$app->session->setFlash('success', 'Probation Appraisal Send to Agreement Successfully.', true);
+            Yii::$app->session->setFlash('success', 'Appraisal Send to Agreement Successfully.', true);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
         }else{
 
@@ -719,11 +719,11 @@ class ProbationController extends Controller
         $result = Yii::$app->navhelper->CodeUnit($service,$data,'IanSendGoalSettingToOverview');
 
         if(!is_string($result)){
-            Yii::$app->session->setFlash('success', 'Probation Appraisal Submitted to Overview Manager Successfully.', true);
+            Yii::$app->session->setFlash('success', 'Appraisal Submitted to Overview Manager Successfully.', true);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
         }else{
 
-            Yii::$app->session->setFlash('error', 'Error Submitting Probation Appraisal to Overview Manager : '. $result);
+            Yii::$app->session->setFlash('error', 'Error Submitting Appraisal to Overview Manager : '. $result);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
 
         }
@@ -773,11 +773,11 @@ class ProbationController extends Controller
         $result = Yii::$app->navhelper->IanSendNewEmployeeAppraisalBackToSupervisor($service,$data);
 
         if(!is_string($result)){
-            Yii::$app->session->setFlash('success', 'Probation Appraisal Sent Back to Supervisor Successfully.', true);
+            Yii::$app->session->setFlash('success', 'Appraisal Sent Back to Supervisor Successfully.', true);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
         }else{
 
-            Yii::$app->session->setFlash('error', 'Error Sending Probation Back to Supervisor  : '. $result);
+            Yii::$app->session->setFlash('error', 'Error Sending Back to Supervisor  : '. $result);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
 
         }
@@ -800,11 +800,11 @@ class ProbationController extends Controller
         $result = Yii::$app->navhelper->CodeUnit($service,$data,'IanSendGoalSettingBackToAppraisee');
 
         if(!is_string($result)){
-            Yii::$app->session->setFlash('success', 'Probation Appraisal Sent Back to Appraisee Successfully.', true);
+            Yii::$app->session->setFlash('success', ' Appraisal Sent Back to Appraisee Successfully.', true);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
         }else{
 
-            Yii::$app->session->setFlash('error', 'Error Sending Probation Back to Appraisee  : '. $result);
+            Yii::$app->session->setFlash('error', 'Error Sending Back to Appraisee  : '. $result);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
 
         }
@@ -830,7 +830,7 @@ class ProbationController extends Controller
         $result = Yii::$app->navhelper->CodeUnit($service,$data,'IanSendGoalSettingBackToLineManager');
 
         if(!is_string($result)){
-            Yii::$app->session->setFlash('success', 'Probation Sent Back Line Manager with comments Successfully.', true);
+            Yii::$app->session->setFlash('success', 'Sent Back Line Manager with comments Successfully.', true);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
         }else{
 
@@ -856,11 +856,11 @@ class ProbationController extends Controller
         $result = Yii::$app->navhelper->CodeUnit($service,$data,'IanSendEYAppraisalForApproval');
 
         if(!is_string($result)){
-            Yii::$app->session->setFlash('success', 'Probation Appraisal Submitted Successfully.', true);
+            Yii::$app->session->setFlash('success', 'Appraisal Submitted Successfully.', true);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
         }else{
 
-            Yii::$app->session->setFlash('error', 'Error Submitting Probation Appraisal : '. $result);
+            Yii::$app->session->setFlash('error', 'Error Submitting Appraisal : '. $result);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
 
         }
@@ -885,7 +885,7 @@ class ProbationController extends Controller
         $result = Yii::$app->navhelper->CodeUnit($service,$data,'IanSendEYAppraisaBackToAppraisee');
 
         if(!is_string($result)){
-            Yii::$app->session->setFlash('success', 'Probation Sent Back to Appraisee with Comments Successfully.', true);
+            Yii::$app->session->setFlash('success', 'Sent Back to Appraisee with Comments Successfully.', true);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
         }else{
 
@@ -916,7 +916,7 @@ class ProbationController extends Controller
         $result = Yii::$app->navhelper->CodeUnit($service,$data,'IanSendEYAppraisaBackToLineManager');
 
         if(!is_string($result)){
-            Yii::$app->session->setFlash('success', 'Probation Sent Back to Line Manager with Comments Successfully.', true);
+            Yii::$app->session->setFlash('success', 'Sent Back to Line Manager with Comments Successfully.', true);
             return $this->redirect(['ovproblist']);
         }else{
 
@@ -942,11 +942,11 @@ class ProbationController extends Controller
         $result = Yii::$app->navhelper->CodeUnit($service,$data,'IanSendEYAppraisalToOverview');
 
         if(!is_string($result)){
-            Yii::$app->session->setFlash('success', 'Probation Appraisal Submitted Successfully.', true);
+            Yii::$app->session->setFlash('success', ' Appraisal Submitted Successfully.', true);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
         }else{
 
-            Yii::$app->session->setFlash('error', 'Error Submitting Probation Appraisal : '. $result);
+            Yii::$app->session->setFlash('error', 'Error Submitting Appraisal : '. $result);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
 
         }
@@ -966,7 +966,7 @@ class ProbationController extends Controller
         $result = Yii::$app->navhelper->CodeUnit($service,$data,'IanSendEYAppraisalToAgreementLevel');
 
         if(!is_string($result)){
-            Yii::$app->session->setFlash('success', 'Probation Appraisal Submitted Successfully.', true);
+            Yii::$app->session->setFlash('success', ' Appraisal Submitted Successfully.', true);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
         }else{
 
@@ -993,7 +993,7 @@ class ProbationController extends Controller
         $result = Yii::$app->navhelper->CodeUnit($service,$data,'IanApproveEYAppraisal');
 
         if(!is_string($result)){
-            Yii::$app->session->setFlash('success', 'Probation Approved Successfully.', true);
+            Yii::$app->session->setFlash('success', ' Approved Successfully.', true);
             return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
         }else{
 

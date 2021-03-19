@@ -58,6 +58,9 @@ $absoluteUrl = \yii\helpers\Url::home(true);
                             <?= $form->field($model, 'Employee_No')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
                             <?= $form->field($model, 'Global_Dimension_1_Code')->dropDownList($programs,['prompt' => 'Select Program']) ?>
 
+                            <?= $form->field($model, 'Cluster')->textInput(['maxlength'=> 150]) ?>
+                            <?php $form->field($model, 'Grand_Parent')->textInput() ?>
+
                         </div>
 
                         <div class="col-md-6">
@@ -65,6 +68,8 @@ $absoluteUrl = \yii\helpers\Url::home(true);
                             <?= $form->field($model, 'Status')->textInput(['readonly'=> true,'disabled'=> true]) ?>
                             <?= $form->field($model, 'Posting_Date')->hiddenInput(['readonly'=> true,'disabled'=> true])->label(false) ?>
                             <?= $form->field($model, 'Approval_Entries')->textInput(['readonly'=> true,'disabled'=> true]) ?>
+
+                            <?= $form->field($model, 'House')->textInput(['maxlength'=> 150]) ?>
 
                         </div>
 
