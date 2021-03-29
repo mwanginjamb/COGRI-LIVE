@@ -435,11 +435,11 @@ class WorkTicketController extends Controller
 
         if(!is_string($result)){
             Yii::$app->session->setFlash('success', 'Request Sent to Supervisor Successfully.', true);
-            return $this->redirect(['view','Plan_No' => $Plan_No]);
+            return $this->redirect(['index']);
         }else{
 
             Yii::$app->session->setFlash('error', 'Error Sending  Request for Approval  : '. $result);
-            return $this->redirect(['view','Plan_No' => $Plan_No]);
+            return $this->redirect(['index']);
 
         }
     }
@@ -459,11 +459,11 @@ class WorkTicketController extends Controller
 
         if(!is_string($result)){
             Yii::$app->session->setFlash('success', 'Request Cancelled Successfully.', true);
-            return $this->redirect(['view','Plan_No' => $Plan_No]);
+            return $this->redirect(['index']);
         }else{
 
             Yii::$app->session->setFlash('error', 'Error Cancelling Approval Request.  : '. $result);
-            return $this->redirect(['view','Plan_No' => $Plan_No]);
+            return $this->redirect(['index']);
 
         }
     }

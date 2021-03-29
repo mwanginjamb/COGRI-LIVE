@@ -35,8 +35,8 @@ public $ShortcutDimCode_x005B_5_x005D_;
 public $ShortcutDimCode_x005B_6_x005D_;
 public $ShortcutDimCode_x005B_7_x005D_;
 public $ShortcutDimCode_x005B_8_x005D_;
-public $Global_Dimension_1_Code;
-public $Global_Dimension_2_Code;
+public $Shortcut_Dimension_1_Code;
+public $Shortcut_Dimension_2_Code;
 
     public function rules()
     {
@@ -50,8 +50,8 @@ public $Global_Dimension_2_Code;
         return [
             'Lease_Period_Months_x003D_M_x002C_Years_x003D_Y' => 'Lease Period',
             'No' => 'Item',
-            'Global_Dimension_1_Code' => 'Program',
-            'Global_Dimension_2_Code' => 'Department',
+            'Shortcut_Dimension_1_Code' => 'Program',
+            'Shortcut_Dimension_2_Code' => 'Department',
             'ShortcutDimCode_x005B_3_x005D_' => 'Student'
         ];
     }

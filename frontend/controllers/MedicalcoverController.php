@@ -100,13 +100,17 @@ class MedicalcoverController extends Controller
 
         if(Yii::$app->request->post() && Yii::$app->navhelper->loadpost(Yii::$app->request->post()['Medicalcover'],$model) ){
 
+             //Yii::$app->recruitment->printrr($model);
+
             $filter = [
                 'Application_No' => $model->Application_No,
             ];
             /*Read the card again to refresh Key in case it changed*/
             $refresh = Yii::$app->navhelper->getData($service,$filter);
-            Yii::$app->navhelper->loadmodel($refresh[0],$model);
+            $model->Key = $refresh[0]->Key; 
+            // Yii::$app->recruitment->printrr($model);
             $result = Yii::$app->navhelper->updateData($service,$model);
+            // Yii::$app->recruitment->printrr($result);
             if(!is_string($result)){
 
                 Yii::$app->session->setFlash('success','Medical Cover Claim Created Successfully.' );
@@ -151,12 +155,8 @@ class MedicalcoverController extends Controller
 
 
         if(Yii::$app->request->post() && Yii::$app->navhelper->loadpost(Yii::$app->request->post()['Medicalcover'],$model) ){
-            $filter = [
-                'Application_No' => $model->Application_No,
-            ];
-            /*Read the card again to refresh Key in case it changed*/
-            $refresh = Yii::$app->navhelper->getData($service,$filter);
-            Yii::$app->navhelper->loadmodel($refresh[0],$model);
+           
+           
 
             $result = Yii::$app->navhelper->updateData($service,$model);
 
@@ -167,7 +167,7 @@ class MedicalcoverController extends Controller
                 return $this->redirect(['view','No' => $result->Application_No]);
 
             }else{
-                Yii::$app->session->setFlash('success','Error Updating Medical Cover Claim '.$result );
+                Yii::$app->session->setFlash('error','Error Updating Medical Cover Claim '.$result );
                 return $this->render('update',[
                     'model' => $model,
                 ]);

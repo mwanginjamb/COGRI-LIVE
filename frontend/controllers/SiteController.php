@@ -120,12 +120,27 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
+        
+
         $model = new LoginForm();
 
 
+       
+
         if ($model->load(Yii::$app->request->post()) && $model->login()  ) {
 
-            //var_dump($model->login()); exit;
+
+            $prohibited = ['Inactive','Terminated','Pending_Approval','New','Pending_Approval'];
+
+            // Only allow those without prohibitted statuses
+            if(in_array(Yii::$app->user->identity->employee[0]->Status, $prohibited)) {
+                Yii::$app->session->setFlash('error','Sorry your status is: '.Yii::$app->user->identity->employee[0]->Status);
+                
+                Yii::$app->user->logout();
+                return $this->goHome();
+            }
+
+            
             return $this->goBack();
 
         } else {

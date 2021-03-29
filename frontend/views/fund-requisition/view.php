@@ -193,6 +193,7 @@ Yii::$app->session->set('isSupervisor',false);*/
 
                     <?php
                     if(is_array($model->getLines($model->No))){ //show Lines ?>
+                    <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                             <tr>
@@ -203,6 +204,7 @@ Yii::$app->session->set('isSupervisor',false);*/
                                 <td><b>Child Rate</b></td>
                                 <td><b>No. of Children</b></td>
                                 <td><b>Amount LCY</b></td>
+                                <td><b>Program</b></td>
 
 
                                 <td><b>Unbudgeted?</b></td>
@@ -228,12 +230,14 @@ Yii::$app->session->set('isSupervisor',false);*/
                                     <td><?= !empty($obj->Child_Rate)?$obj->Child_Rate:'Not Set' ?></td>
                                     <td><?= !empty($obj->No_of_Children)?$obj->No_of_Children:'Not Set' ?></td>
                                     <td><?= !empty($obj->Amount)?$obj->Amount:'Not Set' ?></td>
+                                    <td><?= !empty($obj->Global_Dimension_1_Code)?$obj->Global_Dimension_1_Code:'Not Set' ?></td>
                                     <td><?= Html::checkbox('Unbudgeted',$obj->Unbudgeted) ?></td>
                                     <td><?= $updateLink.'|'.$deleteLink ?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
                         </table>
+                    </div>
                     <?php } ?>
                 </div>
             </div>

@@ -111,7 +111,7 @@ class StorerequisitionlineController extends Controller
                 'items' => $this->getItems(),
                 'programs' => $this->getPrograms(),
                 'departments' => $this->getDepartments(),
-                'students' => $this->getStudent(),
+                // 'students' => $this->getStudent(),
             ]);
         }
 
@@ -166,7 +166,7 @@ class StorerequisitionlineController extends Controller
                 'items' => $this->getItems(),
                 'programs' => $this->getPrograms(),
                 'departments' => $this->getDepartments(),
-                'students' => $this->getStudent(),
+                // 'students' => $this->getStudent(),
             ]);
         }
 
@@ -176,7 +176,7 @@ class StorerequisitionlineController extends Controller
             'items' => $this->getItems(),
             'programs' => $this->getPrograms(),
             'departments' => $this->getDepartments(),
-            'students' => $this->getStudent(),
+            // 'students' => $this->getStudent(),
         ]);
     }
 

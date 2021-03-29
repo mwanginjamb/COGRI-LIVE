@@ -45,7 +45,7 @@ class LoginForm extends Model
             $user = $this->getUser();
             
 
-            if (!$user || !$user->validatePassword($this->password)) {//Add AD login condition here also--> when ad details are given
+            if (!$user || !$user->validatePassword($this->password)) {
 
                 $this->addError($attribute, 'Incorrect username or password.');
             }

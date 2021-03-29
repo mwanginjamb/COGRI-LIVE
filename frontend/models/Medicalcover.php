@@ -38,6 +38,8 @@ public $Comments;
 public $Exceed_Balance;
 public $isNewRecord;
 
+public $Visit_Amount;
+
     /*public function __construct(array $config = [])
     {
         return $this->getLines($this->No);

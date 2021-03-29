@@ -23,7 +23,7 @@ $this->title = 'Update Line.';
             'model' => $model,
             'items' => $items,
             'locations' => $locations,
-            'students' => $students,
+            // 'students' => $students,
             'programs' => $programs,
             'departments' => $departments
         ]) ?>

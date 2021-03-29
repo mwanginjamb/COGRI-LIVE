@@ -36,11 +36,11 @@ $absoluteUrl = \yii\helpers\Url::home(true);
 
                             <div class="col-md-6">
 
-                                <?= $form->field($model, 'Global_Dimension_1_Code')->dropDownList($programs, ['prompt' => 'Select ...']) ?>
+                                <?= $form->field($model, 'Shortcut_Dimension_1_Code')->dropDownList($programs, ['prompt' => 'Select ...']) ?>
 
-                                 <?= $form->field($model, 'Global_Dimension_2_Code')->dropDownList($departments, ['prompt' => 'Select ...']) ?>
+                                 <?= $form->field($model, 'Shortcut_Dimension_2_Code')->dropDownList($departments, ['prompt' => 'Select ...']) ?>
 
-                                <?= $form->field($model, 'ShortcutDimCode_x005B_3_x005D_')->dropDownList($students, ['prompt' => 'Select ...']) ?>
+                                <?php //$form->field($model, 'ShortcutDimCode_x005B_3_x005D_')->dropDownList($students, ['prompt' => 'Select ...']) ?>
 
                             </div>
 

@@ -32,7 +32,7 @@ $model->isNewRecord = true;
             'model' => $model,
             'items' => $items,
             'locations' => $locations,
-            'students' => $students,
+            // 'students' => $students,
             'programs' => $programs,
             'departments' => $departments
         ]) ?>

@@ -115,7 +115,7 @@ class FundsrequisitionlineController extends Controller
 
             $result = Yii::$app->navhelper->updateData($service,$model);
 
-
+            // Yii::$app->recruitment->printrr($result);
 
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             // return $model;

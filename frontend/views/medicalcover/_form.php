@@ -55,6 +55,7 @@ $absoluteUrl = \yii\helpers\Url::home(true);
 
                             <?= $form->field($model, 'Application_No')->hiddenInput()->label(false) ?>
                             <?= $form->field($model, 'Key')->hiddenInput()->label(false) ?>
+                            <?= $form->field($model, 'Employee_No')->hiddenInput()->label(false) ?>
 
                             <?= '<p><span>Application No</span> '.Html::a($model->Application_No,'#'); '</p>' ?>
                             <?= '<p><span>Employee Name</span> '.Html::a($model->Employee_Name,'#'); '</p>' ?>
@@ -74,6 +75,7 @@ $absoluteUrl = \yii\helpers\Url::home(true);
                             <?= $form->field($model, 'Used_Amount')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
                             <?= $form->field($model, 'Balance_Before')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
                             <?= $form->field($model, 'Receipt_Amount')->textInput(['required'=> true]) ?>
+                            <?= $form->field($model, 'Visit_Amount')->textInput(['type' => 'number']) ?>
                             <?= $form->field($model, 'Balance_After')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
 
                             <?= $form->field($model, 'Receipt_No')->textInput(['required'=> true]) ?>
