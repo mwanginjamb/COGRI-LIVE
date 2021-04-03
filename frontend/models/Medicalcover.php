@@ -61,6 +61,17 @@ public $Visit_Amount;
         ];
     }
 
+    public function getLines(){
+        $service = Yii::$app->params['ServiceName']['MedicalCoverLines'];
+        $filter = [
+            'Document_No' => $this->Application_No,
+        ];
+
+        $lines = Yii::$app->navhelper->getData($service, $filter);
+        return $lines;
+
+    }
+
 
 
 }

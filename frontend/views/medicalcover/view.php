@@ -110,8 +110,14 @@ Yii::$app->session->set('isSupervisor',false);*/
                                 <?= $form->field($model, 'Application_No')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
                                 <?= $form->field($model, 'Application_Date')->textInput(['required' => true, 'disabled'=>true]) ?>
                                 <?= $form->field($model, 'Cover_Type')->textInput(['readonly' => true]) ?>
+                                
+                            <p class="parent"><span>+</span>
+
                                 <?= $form->field($model, 'Status')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
                                 <?= '<p><span>Approval Entries </span> '.Html::a($model->Approval_Entries,'#'); '</p>' ?>
+
+
+                            </p>
 
 
 
@@ -123,12 +129,16 @@ Yii::$app->session->set('isSupervisor',false);*/
                                 <?= $form->field($model, 'Balance_Before')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
                                 <?= $form->field($model, 'Receipt_Amount')->textInput(['required'=> true,'readonly'=> true]) ?>
                                 <?= $form->field($model, 'Visit_Amount')->textInput(['required'=> true,'readonly'=> true]) ?>
+                               
+                            <p class="parent"><span>+</span>
                                 <?= $form->field($model, 'Balance_After')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
 
                                 <?= $form->field($model, 'Receipt_No')->textInput(['required'=> true,'readonly'=> true]) ?>
                                 <?= $form->field($model, 'Phone_No')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
                                 <?= $form->field($model, 'E_Mail_Address')->textInput(['readonly'=> true,'disabled'=>true]) ?>
                                 <?= $form->field($model, 'Exceed_Balance')->textInput(['readonly'=> true,'disabled'=>true]) ?>
+
+                            </p>
 
 
 
@@ -148,7 +158,53 @@ Yii::$app->session->set('isSupervisor',false);*/
             </div><!--end details card-->
 
 
-            <!--Objectives card -->
+            <!--Lines -->
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <?=($model->Status == 'New')?Html::a('<i class="fa fa-plus-square"></i> Add Line',['medical-coverline/create','No'=>$model->Application_No],['class' => 'add-line btn btn-outline-info',
+                        ]):'' ?>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <?php if(is_array($model->lines)){ //show Lines ?>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <td><b>Receipt No.</b></td>
+                                <td><b>Amount</b></td>
+                                <td><b>Visit Date</b></td>
+                                
+
+                                <td><b>Action</b></td>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            
+
+                            foreach($model->lines as $obj):
+                                $updateLink = ($model->Status == 'New')?Html::a('<i class="fa fa-edit"></i>',['medical-coverline/update','No'=> $obj->Line_No],['class' => 'update-objective btn btn-outline-info btn-xs']):'';
+                                $deleteLink = ($model->Status == 'New')?Html::a('<i class="fa fa-trash"></i>',['medical-coverline/delete','Key'=> $obj->Key ],['class'=>'mx-2 delete btn btn-outline-danger btn-xs']):'';
+                                ?>
+                                <tr>
+
+                                    <td><?= !empty($obj->Receipt_No)?$obj->Receipt_No:'Not Set' ?></td>
+                                    <td><?= !empty($obj->Amount)?$obj->Amount:'Not Set' ?></td>
+                                    <td><?= !empty($obj->Visit_Date)?$obj->Visit_Date:'Not Set' ?></td>
+                                    <td><?= $updateLink.$deleteLink ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    <?php } ?>
+                </div>
+            </div>
+
+            <!--/End Lines -->
 
 
 
@@ -163,7 +219,7 @@ Yii::$app->session->set('isSupervisor',false);*/
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel" style="position: absolute">Leave Plan</h4>
+                    <h4 class="modal-title" id="myModalLabel" style="position: absolute">Medical Cover Claim</h4>
                 </div>
                 <div class="modal-body">
 
@@ -217,7 +273,7 @@ $script = <<<JS
         
       //Add a training plan
     
-     $('.add-objective, .update-objective').on('click',function(e){
+     $('.add-objective, .update-objective, .add-line').on('click',function(e){
         e.preventDefault();
         var url = $(this).attr('href');
         console.log('clicking...');

@@ -122,6 +122,7 @@ return [
         'MedicalCoverList' => 'MedicalCoverList', //58022
         'MedicalCoverCard' => 'MedicalCoverCard', //58021
         'MedicalCoverTypes' => 'MedicalCoverTypes', //50049
+        'MedicalCoverLines' => 'MedicalCoverLines',//58039
 
         'Currencies' => 'Currencies', // Page 5
         'purchaseDocumentLines'=>'purchaseDocumentLines',//6405

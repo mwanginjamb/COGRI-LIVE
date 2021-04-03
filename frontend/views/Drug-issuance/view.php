@@ -134,11 +134,6 @@ $this->params['breadcrumbs'][] = ['label' => 'Drug Issuance Card', 'url' => ['vi
                 </div>
 
                 <div class="card-body">
-
-
-
-
-
                     <?php if(is_array($model->lines)){ //show Lines ?>
                         <table class="table table-bordered">
                             <thead>
@@ -179,7 +174,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Drug Issuance Card', 'url' => ['vi
                 </div>
             </div>
 
-            <!--End Lines -->
+            <!--/End Lines -->
 
     </div>
 
