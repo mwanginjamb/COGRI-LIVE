@@ -950,7 +950,7 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
                         <!--Fleet Mgt-->
 
                         <li class="nav-item has-treeview <?= Yii::$app->recruitment->currentCtrl(['vehiclerequisition','fuel','work-ticket','repair-requisition'])?'menu-open':'' ?>">
-                            <a href="#" title="Performance Management" class="nav-link <?= Yii::$app->recruitment->currentCtrl('medicalcover')?'active':'' ?>">
+                            <a href="#" title="Fleet Management" class="nav-link <?= Yii::$app->recruitment->currentCtrl(['vehiclerequisition','fuel','work-ticket','repair-requisition'])?'active':'' ?>">
                                 <i class="nav-icon fa fa-truck-moving"></i>
                                 <p>
                                     Fleet Management
