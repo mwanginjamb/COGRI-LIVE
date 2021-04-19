@@ -97,10 +97,6 @@ class ApprovalsController extends Controller
         return $this->render('srejected');
     }
 
-   
-
-   
-
     public function actionGetapprovals(){
         $service = Yii::$app->params['ServiceName']['RequestsTo_ApprovePortal'];
 

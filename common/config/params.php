@@ -7,7 +7,7 @@ return [
     'senderEmail' => 'cogri.support@softeboard.com',
     'senderName' => 'HRMIS mailer',
     'user.passwordResetTokenExpire' => 3600,
-    'powered' => 'Iansoft Ltd.',
+    'powered' => 'Iansoft Technologies Ltd.',
     'NavisionUsername'=>'WEBSERVICE',
     'NavisionPassword'=>'Admin@123',
 

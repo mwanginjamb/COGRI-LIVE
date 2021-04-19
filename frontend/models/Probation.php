@@ -42,6 +42,7 @@ public $Supervisor_Rejection_Comments;
 
 public $Global_Dimension_1_Code;
 public $Global_Dimension_2_Code;
+public $Renew_Contract;
 
     public function rules()
     {

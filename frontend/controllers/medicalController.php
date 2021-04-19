@@ -84,7 +84,7 @@ class MedicalController extends Controller
                 //throw new HttpException(404,"Resouce Not Found: ".$path['return_value']);
                 return $this->render('index',[
                     'report' => false,
-                    'p9years' => ArrayHelper::map($p9years,'Year','desc'),
+                    'p9years' => '',
                     'message' => $path['return_value']
                 ]);
             }

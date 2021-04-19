@@ -41,7 +41,7 @@ if(Yii::$app->session->hasFlash('success')){
         <div class="card">
             <div class="card-header">
 
-                <h3 class="card-title">Goals to Approve - Overview Mgr. List  &nbsp;    <?= Html::a('<i class="fa fa-plus-square"></i> Add New Appraisal',['create'],['class' => 'add-objective btn btn-outline-info btn-sm']) ?></h3>
+                <h3 class="card-title">Goals to Approve - Overview Mgr. List  &nbsp;    <?php Html::a('<i class="fa fa-plus-square"></i> Add New Appraisal',['create'],['class' => 'add-objective btn btn-outline-info btn-sm']) ?></h3>
 
                 
             </div>

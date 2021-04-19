@@ -141,7 +141,7 @@ use yii\widgets\ActiveForm;
                         <div class="col-md-6">
                             <?= $form->field($model,'Key')->hiddenInput()->label(false) ?>
 
-                            <?= $form->field($model, 'Disabled')->checkbox() ?>
+                            <?= $form->field($model, 'Disabled')->checkbox(['value' => $model->Disabled]) ?>
                             <?= $form->field($model, 'Describe_Disability')->textInput() ?>
                             <?= $form->field($model, 'NHIF_Number')->textInput() ?>
 
@@ -196,3 +196,32 @@ use yii\widgets\ActiveForm;
         <?php ActiveForm::end(); ?>
     </div>
 </div>
+<?php
+
+$script = <<<JS
+  
+
+    init();
+
+   $('#applicantprofile-disabled').change(function(){
+     // console.log($(this).prop('checked'));
+
+        if($(this).prop('checked')) {
+            $('.field-applicantprofile-describe_disability').fadeIn();
+        }else{
+            $('.field-applicantprofile-describe_disability').fadeOut();
+        }
+        
+    });
+
+    function init() {
+        if($('#applicantprofile-disabled').prop('checked')) {
+            $('.field-applicantprofile-describe_disability').fadeIn();
+        }else{
+            $('.field-applicantprofile-describe_disability').fadeOut();
+        }
+    }
+    
+JS;
+
+$this->registerJs($script);
