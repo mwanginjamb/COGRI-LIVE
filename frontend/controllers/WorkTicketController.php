@@ -85,7 +85,8 @@ class WorkTicketController extends Controller
                     'programs' => $this->getPrograms(),
                     'departments' => $this->getDepartments(),
                     'vehicles' => $this->getVehicles(),
-                    'requisitions' => $this->getReleasedRequisitions()
+                    'requisitions' => $this->getReleasedRequisitions(),
+                    'fuel' => $this->getFuelReq()
                 ]);
             }
         }
@@ -97,7 +98,7 @@ class WorkTicketController extends Controller
             if(!is_string($result)){
 
                 Yii::$app->session->setFlash('success','Request Created Successfully.' );
-                return $this->redirect(['view','No' => $result->No]);
+                return $this->redirect(['view','No' => $result->Work_Ticket_No]);
 
             }else{
                 Yii::$app->session->setFlash('error','Error Creating Request '.$result );
@@ -109,6 +110,8 @@ class WorkTicketController extends Controller
 
 
         //Yii::$app->recruitment->printrr($model);
+        $model->Departure_Date = ($model->Departure_Date === '0001-01-01')?date('Y-m-d'):$model->Departure_Date;
+          $model->Return_Date = ($model->Return_Date === '0001-01-01')?date('Y-m-d'):$model->Return_Date;
 
         return $this->render('create',[
             'model' => $model,
@@ -116,6 +119,7 @@ class WorkTicketController extends Controller
             'departments' => $this->getDepartments(),
             'vehicles' => $this->getVehicles(),
             'requisitions' => $this->getReleasedRequisitions(),
+            'fuel' => $this->getFuelReq()
         ]);
     }
 
@@ -142,7 +146,8 @@ class WorkTicketController extends Controller
                 'programs' => $this->getPrograms(),
                 'departments' => $this->getDepartments(),
                 'vehicles' => $this->getVehicles(),
-                'requisitions' => $this->getReleasedRequisitions()
+                'requisitions' => $this->getReleasedRequisitions(),
+                'fuel' => $this->getFuelReq()
 
             ]);
         }
@@ -163,13 +168,16 @@ class WorkTicketController extends Controller
                     'programs' => $this->getPrograms(),
                     'departments' => $this->getDepartments(),
                     'vehicles' => $this->getVehicles(),
-                    'requisitions' => $this->getReleasedRequisitions()
+                    'requisitions' => $this->getReleasedRequisitions(),
+                    'fuel' => $this->getFuelReq()
                 ]);
 
             }
 
         }
 
+          $model->Departure_Date = ($model->Departure_Date === '0001-01-01')?date('Y-m-d'):$model->Departure_Date;
+          $model->Return_Date = ($model->Return_Date === '0001-01-01')?date('Y-m-d'):$model->Return_Date;
 
         // Yii::$app->recruitment->printrr($model);
         if(Yii::$app->request->isAjax){
@@ -178,7 +186,8 @@ class WorkTicketController extends Controller
                 'programs' => $this->getPrograms(),
                 'departments' => $this->getDepartments(),
                 'vehicles' => $this->getVehicles(),
-                'requisitions' => $this->getReleasedRequisitions()
+                'requisitions' => $this->getReleasedRequisitions(),
+                'fuel' => $this->getFuelReq()
 
 
             ]);
@@ -189,7 +198,8 @@ class WorkTicketController extends Controller
             'programs' => $this->getPrograms(),
             'departments' => $this->getDepartments(),
             'vehicles' => $this->getVehicles(),
-            'requisitions' => $this->getReleasedRequisitions()
+            'requisitions' => $this->getReleasedRequisitions(),
+            'fuel' => $this->getFuelReq()
 
         ]);
     }
@@ -358,7 +368,36 @@ class WorkTicketController extends Controller
         return ArrayHelper::map($result,'Code','Name');
     }
 
+    public function getFuelReq(){
+        $service = Yii::$app->params['ServiceName']['FuelingList'];
+
+        $filter = [
+            'Posted' => true
+        ];
+        $result = \Yii::$app->navhelper->getData($service, $filter);
+
+
+
+
+        if(is_array($result)){
+            $i = 0;
+            foreach($result as  $emp){
+                $i++;
+                if(!empty($emp->Fuel_Code) && !empty($emp->Vehicle_Registration_No) && !empty($emp->Driver_Name)){
+                    $data[] = [
+                        'No' => $emp->Fuel_Code,
+                        'Desc' => $emp->Vehicle_Registration_No.' | '.$emp->Driver_Name.' | '.$emp->Created_Date
+                    ];
+                }
+        }
+
+    }
+
     
+
+       return ArrayHelper::map($data,'No','Desc');
+
+    }
 
 
 

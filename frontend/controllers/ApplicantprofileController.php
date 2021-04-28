@@ -77,6 +77,10 @@ class ApplicantprofileController extends Controller
         //Yii::$app->recruitment->printrr(Yii::$app->session->get('HRUSER'));
         if(Yii::$app->session->has('mode') || Yii::$app->session->get('mode') == 'external' || Yii::$app->session->has('HRUSER')){
             $this->layout = 'external';
+
+            if(!Yii::$app->session->has('HRUSER')){
+               return $this->redirect(['./recruitment/login']);
+           }
         }
 
         if(Yii::$app->session->has('ProfileID') || Yii::$app->recruitment->hasProfile(Yii::$app->session->get('ProfileID')))

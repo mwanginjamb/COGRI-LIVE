@@ -55,14 +55,25 @@ $absoluteUrl = \yii\helpers\Url::home(true);
                             <?= $form->field($model, 'Key')->hiddenInput()->label(false) ?>
                             <?= $form->field($model, 'Vehicle_Registration_No')->dropDownList($vehicles,['prompt' => 'Select ..']) ?>
                             <?= $form->field($model, 'Booking_Requisition_No')->dropDownList($requisitions,['prompt' => 'select ...']) ?>
-                            <?= $form->field($model, 'Driver_Staff_No')->textInput(['maxlength' =>  100]) ?>
+
+                            <?= $form->field($model, 'Fuel_Requisition_No')->dropDownList($fuel,['prompt' => 'select ...']) ?>
+
+
+
+
+                             <?= $form->field($model, 'Mileage_at_Start_KMS')->textInput(['type' => 'number']) ?>
+                            <?= $form->field($model, 'Current_Mileage_KMS')->textInput(['type' => 'number']) ?>
+                            <?= $form->field($model, 'Department_Requested')->dropDownList($departments, ['prompt' => ' select' ]) ?>
+                            <?= $form->field($model, 'Driver_Staff_No')->textInput(['maxlength' =>  100, 'readonly' => true]) ?>
+
+
+
                             <?= $form->field($model, 'Driver_Name')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
                             <?= $form->field($model, 'Created_By')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
                             <?= $form->field($model, 'Date_Created')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
-                            <?= $form->field($model, 'Mileage_at_Start_KMS')->textInput(['type' => 'number']) ?>
-                            <?= $form->field($model, 'Current_Mileage_KMS')->textInput(['type' => 'number']) ?>
+
                             <?= $form->field($model, 'Requested_By')->textInput(['readonly' => true,'disabled' => 'true']) ?>
-                            <?= $form->field($model, 'Department_Requested')->dropDownList($departments, ['prompt' => ' select' ]) ?>
+                            
 
 
 
@@ -70,16 +81,22 @@ $absoluteUrl = \yii\helpers\Url::home(true);
 
                         <div class="col-md-6">
                             <?= $form->field($model, 'Destination')->textInput() ?>
-                            <?= $form->field($model, 'Purpose_of_Journey')->textInput(['maxlength' => 250]) ?>
-                            <?= $form->field($model, 'Duration_of_Travel_Days')->textInput(['type' => 'number','disabled' => true, 'readonly' => true]) ?>
+                            <?= $form->field($model, 'Purpose_of_Journey')->textarea(['rows' => 2,'maxlength' => 250]) ?>
                             <?= $form->field($model, 'Departure_Date')->textInput(['type'=> 'date']) ?>
                             <?= $form->field($model, 'Departure_Time')->textInput(['type'=> 'time']) ?>
-                            <?= $form->field($model, 'Travelled_Distance_KMS')->textInput(['disabled' =>  true, 'readonly' => true]) ?>
+
                             <?= $form->field($model, 'Arrival_Time')->textInput(['type'=> 'time']) ?>
                             <?= $form->field($model, 'Return_Date')->textInput(['type'=> 'date']) ?>
                             <?= $form->field($model, 'Return_Departure_Time')->textInput(['type' => 'time']) ?>
                             <?= $form->field($model, 'Return_Arrival_Time')->textInput(['type' => 'time']) ?>
                             <?= $form->field($model, 'Submitted')->checkbox(['readonly' => true, 'disabled' => true]) ?>
+
+                            <?= $form->field($model, 'Travelled_Distance_KMS')->textInput(['disabled' =>  true, 'readonly' => true]) ?>
+
+
+                            <?= $form->field($model, 'Duration_of_Travel_Days')->textInput(['type' => 'number','disabled' => true, 'readonly' => true]) ?>
+                            
+                            
 
                         </div>
 

@@ -20,6 +20,9 @@ public $Key;
 public $Work_Ticket_No;
 public $Vehicle_Registration_No;
 public $Booking_Requisition_No;
+
+public $Fuel_Requisition_No;
+
 public $Fixed_Asset_No;
 public $Driver_Staff_No;
 public $Driver_Name;

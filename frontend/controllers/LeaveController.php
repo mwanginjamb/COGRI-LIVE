@@ -203,6 +203,8 @@ class LeaveController extends Controller
                 Yii::$app->session->setFlash('success','Error Updating Leave Document '.$result );
                 return $this->render('update',[
                     'model' => $model,
+                    'leavetypes' => $this->getLeaveTypes(),
+                    'employees' => $this->getEmployees(),
                 ]);
 
             }

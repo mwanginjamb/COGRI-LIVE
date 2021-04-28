@@ -26,7 +26,9 @@ $model->isNewRecord = true;
         'model' => $model,
         'vehicles' => $vehicles,
         'departments' =>  $departments,
-        'requisitions' => $requisitions
+        'requisitions' => $requisitions,
+        'fuel' => $fuel
+
 
 
     ]) ?>

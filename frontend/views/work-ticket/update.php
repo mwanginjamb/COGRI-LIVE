@@ -24,7 +24,8 @@ $this->title = 'Update Work Ticket';
         'model' => $model,
         'vehicles' =>  $vehicles,
         'departments' =>  $departments,
-        'requisitions' => $requisitions
+        'requisitions' => $requisitions,
+        'fuel' => $fuel
 
     ]) ?>
 
