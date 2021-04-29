@@ -53,7 +53,23 @@ $absoluteUrl = \yii\helpers\Url::home(true);
 
                             <?= $form->field($model, 'Work_Ticket_No')->textInput(['readonly' => true]) ?>
                             <?= $form->field($model, 'Key')->hiddenInput()->label(false) ?>
-                            <?= $form->field($model, 'Vehicle_Registration_No')->dropDownList($vehicles,['prompt' => 'Select ..']) ?>
+                            <?= $form->field($model, 'Vehicle_Registration_No')->dropDownList($vehicles,
+                                [
+                                    'prompt' => 'Select ..',
+                                    'onchange' => '
+
+
+                                    $.post("../work-ticket/fueldd?Regno="+$(this).val(), (data) => {
+                                               $("select#workticket-fuel_requisition_no").html(data);
+                                        });
+
+                                    $.post("../work-ticket/bookingdd?Regno="+$(this).val(), (data) => {
+                                               $("select#workticket-booking_requisition_no").html(data);
+                                        });
+
+
+                                    '
+                                ]) ?>
                             <?= $form->field($model, 'Booking_Requisition_No')->dropDownList($requisitions,['prompt' => 'select ...']) ?>
 
                             <?= $form->field($model, 'Fuel_Requisition_No')->dropDownList($fuel,['prompt' => 'select ...']) ?>

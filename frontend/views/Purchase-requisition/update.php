@@ -11,9 +11,9 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\AgendaDocument */
-$this->params['breadcrumbs'][] = ['label' => 'Store Requisitions', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Purchase Requisitions', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => 'Update Request', 'url' => ['update','No' => $model->No]];
-$this->title = 'Update Store Requisition';
+$this->title = 'Update Purchase Requisition';
 
 ?>
 <div class="agenda-document-update">

@@ -224,23 +224,7 @@ class WorkTicketController extends Controller
         return ArrayHelper::map($arr,'Code','Description');
     }
 
-    public function getReleasedRequisitions()
-    {
-        $service = Yii::$app->params['ServiceName']['ReleasedBookingRequisitions'];
-        $result = \Yii::$app->navhelper->getData($service, []);
-         $arr = [];
-        $i = 0;
-        foreach($result as $res){
-            if(!empty($res->Booking_Requisition_No) && !empty($res->Vehicle_Registration_No)){
-                ++$i;
-                $arr[$i] = [
-                    'Code' => $res->Booking_Requisition_No,
-                    'Description' => $res->Vehicle_Registration_No.' - '.$res->Requisition_Date.' - '. $res->Booking_Requisition_No
-                ];
-            }
-        }
-         return ArrayHelper::map($arr,'Code','Description');
-    }
+    
 
     public function actionDelete(){
         $service = Yii::$app->params['ServiceName']['WorkTicketDocument'];
@@ -386,12 +370,12 @@ class WorkTicketController extends Controller
                 if(!empty($emp->Fuel_Code) && !empty($emp->Vehicle_Registration_No) && !empty($emp->Driver_Name)){
                     $data[] = [
                         'No' => $emp->Fuel_Code,
-                        'Desc' => $emp->Vehicle_Registration_No.' | '.$emp->Driver_Name.' | '.$emp->Created_Date
+                        'Desc' => $emp->Vehicle_Registration_No.' | '.$emp->Driver_Name.' | '.$emp->Created_Date.' | '.$emp->Fuel_Code
                     ];
                 }
-        }
+            }
 
-    }
+        }
 
     
 
@@ -427,6 +411,95 @@ class WorkTicketController extends Controller
         }
 
         return $data;
+    }
+
+
+    public function actionFueldd($Regno)
+    {
+       
+            $service = Yii::$app->params['ServiceName']['FuelingList'];
+            $filter = ['Vehicle_Registration_No' => $Regno];
+            $result = \Yii::$app->navhelper->getData($service, $filter);
+            //$data =  Yii::$app->navhelper->refactorArray($result,'No','Name');
+
+        $data =[];
+        if(is_array($result)){
+            $i = 0;
+            foreach($result as  $emp){
+                $i++;
+                if(!empty($emp->Fuel_Code) && !empty($emp->Vehicle_Registration_No) && !empty($emp->Driver_Name)){
+                    $data[] = [
+                        'No' => $emp->Fuel_Code,
+                        'Desc' => $emp->Vehicle_Registration_No.' | '.$emp->Driver_Name.' | '.$emp->Created_Date.' | '.$emp->Fuel_Code
+                    ];
+                }
+            }
+
+        }        
+        // Yii::$app->recruitment->printrr($data);
+        if(count($data) )
+        {
+            foreach($data  as $k=>$v )
+            {
+                echo "<option value=".$v['No'].">".$v['Desc']."</option>";
+            }
+        }else{
+            echo "<option value=''>No data Available</option>";
+        }
+    }
+
+    //V Booking DD
+
+    public function actionBookingdd($Regno)
+    {
+       
+            $service = Yii::$app->params['ServiceName']['ReleasedBookingRequisitions'];
+            $filter = ['Vehicle_Registration_No' => $Regno];
+            $result = \Yii::$app->navhelper->getData($service, $filter);
+            //$data =  Yii::$app->navhelper->refactorArray($result,'No','Name');
+
+        $data = [];
+        if(is_array($result)){
+            $i = 0;
+            foreach($result as $res){
+            if(!empty($res->Booking_Requisition_No) && !empty($res->Vehicle_Registration_No)){
+                ++$i;
+                $data[] = [
+                    'Code' => $res->Booking_Requisition_No,
+                    'Description' => $res->Vehicle_Registration_No.' - '.$res->Requisition_Date.' - '. $res->Booking_Requisition_No
+                ];
+            }
+        }
+
+        }        
+        // Yii::$app->recruitment->printrr($data);
+        if(count($data) )
+        {
+            foreach($data  as $k=>$v )
+            {
+                echo "<option value=".$v['Code'].">".$v['Description']."</option>";
+            }
+        }else{
+            echo "<option value=''>No data Available</option>";
+        }
+    }
+
+    public function getReleasedRequisitions()
+    {
+        $service = Yii::$app->params['ServiceName']['ReleasedBookingRequisitions'];
+        $result = \Yii::$app->navhelper->getData($service, []);
+         $arr = [];
+        $i = 0;
+        foreach($result as $res){
+            if(!empty($res->Booking_Requisition_No) && !empty($res->Vehicle_Registration_No)){
+                ++$i;
+                $arr[$i] = [
+                    'Code' => $res->Booking_Requisition_No,
+                    'Description' => $res->Vehicle_Registration_No.' - '.$res->Requisition_Date.' - '. $res->Booking_Requisition_No
+                ];
+            }
+        }
+         return ArrayHelper::map($arr,'Code','Description');
     }
 
 

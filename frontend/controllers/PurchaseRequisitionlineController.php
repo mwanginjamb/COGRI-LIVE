@@ -385,6 +385,7 @@ class PurchaseRequisitionlineController extends Controller
     // Get options for No. Dropdown
     public function actionNoDd($type)
     {
+        $data = [];
         if($type == 'G_L_Account')
         {
             $service = Yii::$app->params['ServiceName']['GLAccountList'];

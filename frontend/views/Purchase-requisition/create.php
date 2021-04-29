@@ -12,7 +12,7 @@ use yii\helpers\Html;
 /* @var $model frontend\models\AgendaDocument */
 
 $this->title = 'Purchase Requisition';
-$this->params['breadcrumbs'][] = ['label' => 'Store Requisitions', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Purchase Requisitions', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => 'New Request', 'url' => ['create']];
 //$this->params['breadcrumbs'][] = $this->title;
 
