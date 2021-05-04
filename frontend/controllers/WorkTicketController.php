@@ -422,7 +422,10 @@ class WorkTicketController extends Controller
             $result = \Yii::$app->navhelper->getData($service, $filter);
             //$data =  Yii::$app->navhelper->refactorArray($result,'No','Name');
 
-        $data =[];
+        $data[] =[
+            'No' => '',
+            'Desc' => 'Select ...',
+        ];
         if(is_array($result)){
             $i = 0;
             foreach($result as  $emp){
@@ -458,7 +461,10 @@ class WorkTicketController extends Controller
             $result = \Yii::$app->navhelper->getData($service, $filter);
             //$data =  Yii::$app->navhelper->refactorArray($result,'No','Name');
 
-        $data = [];
+        $data[] = [
+             'Code' => '',
+            'Description' => 'Select ...',
+        ];
         if(is_array($result)){
             $i = 0;
             foreach($result as $res){
