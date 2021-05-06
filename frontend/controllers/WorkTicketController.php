@@ -418,7 +418,10 @@ class WorkTicketController extends Controller
     {
        
             $service = Yii::$app->params['ServiceName']['FuelingList'];
-            $filter = ['Vehicle_Registration_No' => $Regno];
+            $filter = [
+                'Vehicle_Registration_No' => $Regno,
+                'Status' => 'Approved'
+            ];
             $result = \Yii::$app->navhelper->getData($service, $filter);
             //$data =  Yii::$app->navhelper->refactorArray($result,'No','Name');
 

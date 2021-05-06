@@ -625,6 +625,8 @@ class ImprestController extends Controller
         $service = Yii::$app->params['ServiceName']['PortalImprestRequest'];
         $filter = [
             'Employee_No' => Yii::$app->user->identity->Employee[0]->No,
+            'Status' => 'Approved',
+            'Posted' =>  true
                        
         ];
 
