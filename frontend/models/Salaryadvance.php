@@ -44,6 +44,8 @@ public $Posted_By;
 public $Posted_On;
 public $isNewRecord;
 
+public $Rejection_Reason;
+
     /*public function __construct(array $config = [])
     {
         return $this->getLines($this->No);

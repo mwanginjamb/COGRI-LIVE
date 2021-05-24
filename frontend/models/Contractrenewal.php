@@ -28,6 +28,8 @@ public $Department;
 public $Program;
 public $Job_Description;
 
+public $Rejection_Reason;
+
 
     public function rules()
     {

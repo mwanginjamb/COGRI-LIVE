@@ -41,6 +41,9 @@ public $EFT_No;
 public $Request_For;
 public $Created_On;
 public $isNewRecord;
+
+
+public $Rejection_Reason;
     /*public function __construct(array $config = [])
     {
         return $this->getLines($this->No);

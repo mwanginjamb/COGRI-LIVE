@@ -43,6 +43,8 @@ public $Allowance_Request_Line;
 public $Charge_as_a_Single_Transaction;
 public $isNewRecord;
 
+public $Rejection_Reason;
+
     /*public function __construct(array $config = [])
     {
         return $this->getLines($this->No);

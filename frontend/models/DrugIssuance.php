@@ -29,6 +29,7 @@ public $Status;
 public $Posting_Date;
 public $Approval_Entries;
 public $isNewRecord;
+public $Rejection_Reason;
 
     /*public function __construct(array $config = [])
     {

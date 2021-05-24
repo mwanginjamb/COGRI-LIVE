@@ -29,6 +29,8 @@ public $Approval_Entries;
 public $Purchase_Requisition_Line;
 public $isNewRecord;
 
+public $Rejection_Reason;
+
     /*public function __construct(array $config = [])
     {
         return $this->getLines($this->No);

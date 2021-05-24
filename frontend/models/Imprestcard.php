@@ -46,6 +46,7 @@ public $Imprest_Request_Line;
 public $isNewRecord;
 
 public $M_PESA_Withdrawal_Fee;
+public $Rejection_Reason;
 
     /*public function __construct(array $config = [])
     {

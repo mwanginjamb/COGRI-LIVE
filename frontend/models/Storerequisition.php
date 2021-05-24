@@ -31,6 +31,7 @@ public $House;
 public $Grand_Parent;
 
 public $isNewRecord;
+public $Rejection_Reason;
 
     /*public function __construct(array $config = [])
     {
