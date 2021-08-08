@@ -693,16 +693,47 @@ class ProbationController extends Controller
         $result = Yii::$app->navhelper->CodeUnit($service,$data,'IanSendEYAppraisalToAgreementLevel');
 
         if(!is_string($result)){
-            Yii::$app->session->setFlash('success', 'Appraisal Send to Agreement Successfully.', true);
-            return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
+            Yii::$app->session->setFlash('success', 'Appraisal Sent to Agreement Successfully.', true);
+            return $this->redirect(['superproblist']);
         }else{
 
             Yii::$app->session->setFlash('error', 'Error Sending to Agreement : '. $result);
-            return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
+            return $this->redirect(['superproblist']);
 
         }
 
     }
+
+
+    
+// Send EY Back to Line Manager  --From Agreement back to super  
+
+public function actionEybacktolinemgr()
+{
+    $service = Yii::$app->params['ServiceName']['AppraisalWorkflow'];
+    $appraisalNo = Yii::$app->request->post('Appraisal_No');
+    $employeeNo = Yii::$app->request->post('Employee_No');
+    $data = [
+        'appraisalNo' => $appraisalNo,
+        'employeeNo' => $employeeNo,
+        'sendEmail' => 1,
+        'approvalURL' => Yii::$app->urlManager->createAbsoluteUrl(['probation/view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]),
+        'rejectionComments' => '',
+    ];
+
+    $result = Yii::$app->navhelper->CodeUnit($service,$data,'IanSendEYAppraisaBackToLineManager');
+
+    if(!is_string($result)){
+        Yii::$app->session->setFlash('success', 'Sent Back to Line Manager Successfully.', true);
+        return $this->redirect(['agreementlist']);
+    }else{
+
+        Yii::$app->session->setFlash('error', 'Error  : '. $result);
+        return $this->redirect(['agreementlist']);
+
+    }
+
+}
 
 
 
@@ -926,6 +957,7 @@ class ProbationController extends Controller
         }
 
     }
+
 
 
 // Submit Appraisal to Overview

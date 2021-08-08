@@ -185,7 +185,7 @@ if(Yii::$app->session->hasFlash('success')){
                                         <td><?= !empty($obj->Estimate_Total_Amount)?$obj->Estimate_Total_Amount:'Not Set' ?></td>
                                         <td><?= !empty($obj->Procurement_Method)?$obj->Procurement_Method:'Not Set' ?></td>
 
-                                        <td><?= !empty($obj->ShortcutDimCode_x005B_3_x005D_)?$obj->ShortcutDimCode_x005B_3_x005D_:'Not Set' ?></td>
+                                        <td><?= !empty($obj->Student_Name)?$obj->Student_Name:'Not Set' ?></td>
                                         <td><?= !empty($obj->ShortcutDimCode_x005B_4_x005D_)?$obj->ShortcutDimCode_x005B_4_x005D_:'Not Set' ?></td>
                                         <td><?= !empty($obj->ShortcutDimCode_x005B_5_x005D_)?$obj->ShortcutDimCode_x005B_5_x005D_:'Not Set' ?></td>
 
@@ -217,8 +217,12 @@ if(Yii::$app->session->hasFlash('success')){
                     </button>
                     <h4 class="modal-title" id="myModalLabel" style="position: absolute">Purchase Requisitions</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body d-flex align-items-center justify-content-center">
 
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading</span>
+                            </div>
+                        
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -267,7 +271,7 @@ $script = <<<JS
         });
         
         
-      //Add  plan Line
+      //Add Line
     
      $('.add-line, .update-objective').on('click',function(e){
         e.preventDefault();

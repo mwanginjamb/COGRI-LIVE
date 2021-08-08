@@ -47,7 +47,7 @@ $absoluteUrl = \yii\helpers\Url::home(true);
                                 <?= $form->field($model, 'Requisition_No')->textInput(['readonly' => true]) ?>
 
                                 <?= $form->field($model, 'Estimate_Total_Amount')->textInput(['readonly' => true, 'disabled' =>  true]) ?>
-                                <?= $form->field($model, 'ShortcutDimCode_x005B_3_x005D_')->dropDownList($students, ['prompt' => 'Select Student...']) ?>
+                                <?= $form->field($model, 'Sortcut_Dimension_3_Code')->dropDownList($students, ['prompt' => 'Select Student...']) ?>
                                 <?= $form->field($model, 'Institution_Code')->dropDownList($institutions, ['prompt' => 'Select Institution ...']) ?>
                                 <?= $form->field($model, 'ShortcutDimCode_x005B_4_x005D_')->dropDownList($shades, ['Prompt' => 'Select Shade ...']) ?>
                                 <?= $form->field($model, 'ShortcutDimCode_x005B_5_x005D_')->dropDownList($animals, ['Prompt' => 'Select Animal...']) ?>
@@ -91,8 +91,9 @@ $absoluteUrl = \yii\helpers\Url::home(true);
 <?php
 $script = <<<JS
 
-$('#purchaserequisitionline-shortcutdimcode_x005b_3_x005d_').select2();
+$('#purchaserequisitionline-sortcut_dimension_3_code').select2();
 $('#purchaserequisitionline-institution_code').select2();
+
 
  //Submit form and get results in json    
         $('form').on('submit', function(e){

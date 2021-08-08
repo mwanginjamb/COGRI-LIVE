@@ -26,6 +26,8 @@ public $Location;
 public $Estimate_Unit_Price;
 public $Estimate_Total_Amount;
 public $Procurement_Method;
+public $Sortcut_Dimension_3_Code;
+public $Student_Name;
 public $ShortcutDimCode_x005B_3_x005D_;
 public $ShortcutDimCode_x005B_4_x005D_;
 public $ShortcutDimCode_x005B_5_x005D_;
@@ -57,7 +59,7 @@ public $isNewRecord;
     {
         return [
             'Global_Dimension_2_Code' => 'Department',
-            'ShortcutDimCode_x005B_3_x005D_' => 'Student',
+            'Sortcut_Dimension_3_Code' => 'Student',
             'ShortcutDimCode_x005B_4_x005D_' => 'Shade',
             'ShortcutDimCode_x005B_5_x005D_' => 'Animal',
             'ShortcutDimCode_x005B_6_x005D_' => 'unknown Dim 3',

@@ -103,6 +103,9 @@ public $Employee_Category;
 public $EFT_Format;
 public $Overview_Manager;
 
+public $Flaunt_1_3_Rule;
+public $Pay_Via_Waumini;
+
     public function rules()
     {
         return [

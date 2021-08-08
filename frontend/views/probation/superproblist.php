@@ -83,7 +83,7 @@ $script = <<<JS
                
             ] ,                              
            language: {
-                "zeroRecords": "No Probation Appraisals to display"
+                "zeroRecords": "No Appraisals to display"
             },
             
             order : [[ 0, "desc" ]]

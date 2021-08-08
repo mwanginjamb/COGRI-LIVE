@@ -78,7 +78,7 @@ class ProbationKpiController extends Controller
         if(Yii::$app->request->post() && Yii::$app->navhelper->loadpost(Yii::$app->request->post()['Probationkpi'],$model)  && $model->validate() ){
 
 
-            $result = Yii::$app->navhelper->updateData($service,$model);
+            $result = Yii::$app->navhelper->postData($service,$model);
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             if(is_object($result)){
 

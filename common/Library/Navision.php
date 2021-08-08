@@ -34,7 +34,7 @@ class Navision extends Component
     {
         $client = $this->createClient($credentials, $soapWsdl);
         try {
-            $result = $client->ReadMultiple(['filter' => $filter, 'setSize' => 15000]);
+            $result = $client->ReadMultiple(['filter' => $filter, 'setSize' => 25000]);
             return $result;
         } catch (Exception $e) {
             return $e->getMessage();

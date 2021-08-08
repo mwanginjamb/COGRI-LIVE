@@ -69,6 +69,22 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                     <?php endif; ?>
 
 
+                    <?php if(($model->isAppraisee()) && $model->Appraisal_Status == 'Agreement_Level'): ?>
+
+                        <div class="col-md-4 mx-2">
+
+                            <?= Html::a('<i class="fas fa-backward"></i> To Ln. Mgr',['eybacktolinemgr','appraisalNo'=> $model->Appraisal_No,'employeeNo' => $model->Employee_No],['class' => 'btn btn-app bg-success submitforapproval','data' => [
+                                    'confirm' => 'Are you sure you want to submit back this Agreement Appraisal to Supervisor ?',
+                                    'method' => 'post',
+                                ],
+                                'title' => 'Submit Agreement Back to Line Manager.'
+
+                            ]) ?>
+                        </div>
+
+                    <?php endif; ?>
+
+
                     
                     <?php if($model->Goal_Setting_Status == 'Supervisor_Level' && $model->isSupervisor()): ?>
                         <div class="col-md-4">
@@ -161,6 +177,19 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                                     'title' => 'Submit  Back to Appraisee'
 
                             ]) ?>
+
+
+                            <!-- Send Appraisal To Agreement Stage -->
+
+                            <?= Html::a('<i class="fas fa-forward"></i> To Agreement.',['agreementlevel','appraisalNo'=> $model->Appraisal_No,'employeeNo' => $model->Employee_No],
+                                [
+                                    'class' => 'btn btn-app bg-success',
+                                    'rel' => $_GET['Appraisal_No'],
+                                    'rev' => $_GET['Employee_No'],
+                                    'title' => 'Send Appraisal to Agreement Level'
+
+                            ]) ?>
+
 
 
                             <!-- Send Probation to Overview -->
@@ -403,7 +432,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
             <div class="card-header">
                 <div class="card-title">Employee Appraisal KRAs (Key Result Areas)   </div>
                 <div class="card-tools">
-                    <?= ($model->Goal_Setting_Status == 'New')?Html::a('<i class="fa fa-plus-square"></i> Add K.R.A',['objective/create','Employee_No'=>$model->Employee_No,'Appraisal_No' => $model->Appraisal_No],['class' => 'add-objective btn btn-sm btn-outline-info']):'' ?>
+                    <?php ($model->Goal_Setting_Status == 'New')?Html::a('<i class="fa fa-plus-square"></i> Add K.R.A',['objective/create','Employee_No'=>$model->Employee_No,'Appraisal_No' => $model->Appraisal_No],['class' => 'add-objective btn btn-sm btn-outline-info']):'' ?>
                 </div>
             </div>
 
@@ -437,7 +466,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                                     <td><?= !empty($obj->Overall_Rating)?$obj->Overall_Rating:'Not Set' ?></td>
                                     <td><?= !empty($obj->Total_Weigth)?$obj->Total_Weigth:'Not Set' ?></td>
                                     <td><?= !empty($obj->Maximum_Weight)?$obj->Maximum_Weight:'Not Set' ?></td>
-                                    <td><?=($model->Goal_Setting_Status == 'New')?$updateLink.$deleteLink.$addKpi:'' ?></td>
+                                    <td><?=($model->Goal_Setting_Status == 'New')?$updateLink.$addKpi:'' ?></td>
                                 </tr>
                                 <tr class="child">
                                     <td colspan="6" >

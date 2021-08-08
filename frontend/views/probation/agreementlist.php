@@ -14,7 +14,7 @@ use yii\helpers\Html;
 
 $this->title = Yii::$app->params['generalTitle'];
 $this->params['breadcrumbs'][] = ['label' => 'Performance Management', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => 'Probation Appraisal Agreement List', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Appraisal Agreement List', 'url' => ['index']];
 ?>
 
 
@@ -41,7 +41,7 @@ if(Yii::$app->session->hasFlash('success')){
         <div class="card">
             <div class="card-header">
 
-                <h3 class="card-title">Agreement Probation Appraisal List  &nbsp;    <?= Html::a('<i class="fa fa-plus-square"></i> Add New Appraisal',['create'],['class' => 'add-objective btn btn-outline-info btn-sm']) ?></h3>
+                <h3 class="card-title">Agreement  Appraisal List  </h3>
 
                 
             </div>
@@ -83,7 +83,7 @@ $script = <<<JS
                
             ] ,                              
            language: {
-                "zeroRecords": "No Probation Appraisals to display"
+                "zeroRecords": "No Agreement Level Appraisals to display"
             },
             
             order : [[ 0, "desc" ]]
