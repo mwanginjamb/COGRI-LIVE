@@ -71,14 +71,27 @@ class ProbationKpiController extends Controller
 
         $model = new Probationkpi();
         $service = Yii::$app->params['ServiceName']['ProbationKPIs'];
-        $model->Appraisal_No = $Appraisal_No;
-        $model->Employee_No = $Employee_No;
-        $model->KRA_Line_No = $KRA_Line_No;
+
+         /*Do initial request */
+         if(!isset(Yii::$app->request->post()['Probationkpi'])){
+            $model->Appraisal_No = $Appraisal_No;
+            $model->Employee_No = $Employee_No;
+            $model->KRA_Line_No = $KRA_Line_No;
+            $request = Yii::$app->navhelper->postData($service, $model);
+            if(!is_string($request) )
+            {
+                Yii::$app->navhelper->loadmodel($request,$model);
+            }else{
+                // Yii::$app->recruitment->printrr($request);
+                return ['note' => '<div class="alert alert-danger">Error : '.$result.'</div>' ];
+                
+            }
+        }
 
         if(Yii::$app->request->post() && Yii::$app->navhelper->loadpost(Yii::$app->request->post()['Probationkpi'],$model)  && $model->validate() ){
 
 
-            $result = Yii::$app->navhelper->postData($service,$model);
+            $result = Yii::$app->navhelper->updateData($service,$model);
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             if(is_object($result)){
 
@@ -141,29 +154,25 @@ class ProbationKpiController extends Controller
         $model->Appraisal_No = Yii::$app->request->post('Appraisal_No');
         $model->Employee_No = Yii::$app->request->post('Employee_No');
         $model->KRA_Line_No = Yii::$app->request->post('KRA_Line_No');
+        $model->Key = Yii::$app->request->post('Key');
 
-        $request = Yii::$app->navhelper->postData($service, $model);
+        $request = Yii::$app->navhelper->updateData($service, $model);
         Yii::$app->response->format = \yii\web\response::FORMAT_JSON;
         return $request; 
 
     }
 
 
-    public function actionUpdate(){
+    public function actionUpdate($Key){
         $model = new Probationkpi() ;
         $model->isNewRecord = false;
         $service = Yii::$app->params['ServiceName']['ProbationKPIs'];
-        $filter = [
-            'KRA_Line_No' => Yii::$app->request->get('KRA_Line_No'),
-            'Employee_No' => Yii::$app->request->get('Employee_No'),
-            'Appraisal_No' => Yii::$app->request->get('Appraisal_No'),
-            'Line_No' => Yii::$app->request->get('Line_No'),
-        ];
-        $result = Yii::$app->navhelper->getData($service,$filter);
+        
+        $result = Yii::$app->navhelper->readByKey($service, $Key);
 
-        if(is_array($result)){
+        if(is_object($result)){
             //load nav result to model
-            $model = Yii::$app->navhelper->loadmodel($result[0],$model) ;
+            $model = Yii::$app->navhelper->loadmodel($result,$model) ;
         }else{
             Yii::$app->recruitment->printrr($result);
         }

@@ -175,7 +175,7 @@ $script = <<<JS
 
 
 /*Set KPI weight*/
-
+        disableSubmit();
         $('#probationkpi-weight').change(function(e){
 
         const Weight = e.target.value;
@@ -227,12 +227,13 @@ $script = <<<JS
         const Appraisal_No = $('#probationkpi-appraisal_no').val();
         const Employee_No = $('#probationkpi-employee_no').val();
         const KRA_Line_No = $('#probationkpi-kra_line_no').val();
+        const Key = $('#probationkpi-key').val();
       
 
         if(Objective.length){
             
             const url = $('input[name=url]').val()+'probation-kpi/setkpi';
-            $.post(url,{'Objective': Objective, 'Appraisal_No': Appraisal_No, 'Employee_No': Employee_No, 'KRA_Line_No': KRA_Line_No}).done(function(msg){
+            $.post(url,{'Objective': Objective, 'Appraisal_No': Appraisal_No, 'Employee_No': Employee_No, 'KRA_Line_No': KRA_Line_No, 'Key': Key}).done(function(msg){
                    //populate empty form fields with new data
                    
                   

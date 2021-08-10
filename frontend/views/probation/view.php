@@ -499,7 +499,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
 
                                                     foreach($model->getKpi($obj->Line_No) as $kpi):
 
-                             $updateLink = Html::a('<i class="fa fa-edit"></i>',['probation-kpi/update','Line_No'=> $kpi->Line_No,'Employee_No'=>$model->Employee_No,'Appraisal_No' => $model->Appraisal_No,'KRA_Line_No' => $obj->Line_No],['class' => 'mx-1 update-objective btn btn-xs btn-outline-info', 'title' => 'Update Key Result Area']);
+                             $updateLink = Html::a('<i class="fa fa-edit"></i>',['probation-kpi/update','Key'=> $kpi->Key],['class' => 'mx-1 update-objective btn btn-xs btn-outline-info', 'title' => 'Update Key Result Area']);
                              $deleteLink = ($model->Goal_Setting_Status == 'New')?Html::a('<i class="fa fa-trash"></i>',['probation-kpi/delete','Key'=> $kpi->Key ],['class'=>'mx-1 delete btn btn-danger btn-xs', 'title' => 'Delete Key Performance Indicator/ Objective']):'';
 
 
