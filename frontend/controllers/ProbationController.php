@@ -708,7 +708,7 @@ class ProbationController extends Controller
     
 // Send EY Back to Line Manager  --From Agreement back to super  
 
-public function actionEybacktolinemgr()
+/*public function actionEybacktolinemgr()
 {
     $service = Yii::$app->params['ServiceName']['AppraisalWorkflow'];
     $appraisalNo = Yii::$app->request->post('Appraisal_No');
@@ -717,11 +717,14 @@ public function actionEybacktolinemgr()
         'appraisalNo' => $appraisalNo,
         'employeeNo' => $employeeNo,
         'sendEmail' => 1,
-        'approvalURL' => Yii::$app->urlManager->createAbsoluteUrl(['probation/view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]),
+        'approvalURL' => '',// Yii::$app->urlManager->createAbsoluteUrl(['probation/view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]),
         'rejectionComments' => '',
     ];
 
-    $result = Yii::$app->navhelper->CodeUnit($service,$data,'IanSendEYAppraisaBackToLineManager');
+    
+
+    $result = Yii::$app->navhelper->CodeUnit($service,$data,'IanSendEYAppraisaBackToLineManagerFromAgreement');
+    // Yii::$app->recruitment->printrr($result);
 
     if(!is_string($result)){
         Yii::$app->session->setFlash('success', 'Sent Back to Line Manager Successfully.', true);
@@ -735,7 +738,34 @@ public function actionEybacktolinemgr()
 
 }
 
+*/
 
+public function actionEybacktolinemgr()
+    {
+        $service = Yii::$app->params['ServiceName']['AppraisalWorkflow'];
+        $appraisalNo = Yii::$app->request->get('appraisalNo');
+        $employeeNo = Yii::$app->request->get('employeeNo');
+        $data = [
+            'appraisalNo' => $appraisalNo,
+            'employeeNo' => $employeeNo,
+            'sendEmail' => 1,
+            'approvalURL' => Yii::$app->urlManager->createAbsoluteUrl(['probation/view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]),
+            'rejectionComments' => ''
+        ];
+
+        $result = Yii::$app->navhelper->CodeUnit($service,$data,'IanSendEYAppraisaBackToLineManagerFromAgreement');
+
+        if(!is_string($result)){
+            Yii::$app->session->setFlash('success', 'Appraisal Submitted Successfully.', true);
+            return $this->redirect(['agreementlist']);
+        }else{
+
+            Yii::$app->session->setFlash('error', 'Error Submitting Appraisal : '. $result);
+            return $this->redirect(['agreementlist',]);
+
+        }
+
+    }
 
     public function actionSubmittooverview($appraisalNo,$employeeNo)
     {

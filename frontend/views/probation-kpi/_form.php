@@ -81,7 +81,7 @@ $absoluteUrl = \yii\helpers\Url::home(true);
                                         true => 'I agree', false => 'I disagree'
                                      ]): '' ?>
 
-                                      <?= (Yii::$app->session->get('Goal_Setting_Status' == 'Closed') && Yii::$app->session->get('Appraisal_Status') == 'Agreement_Level') ? $form->field($model, 'Disagreement_Comments')->textArea(['max-length' => 250, 'row' => 4,'placeholder' => 'Your Comment']):'' ?>
+                                      <?= (Yii::$app->session->get('Appraisal_Status') == 'Agreement_Level') ? $form->field($model, 'Disagreement_Comments')->textArea(['max-length' => 250, 'row' => 4,'placeholder' => 'Your Comment']):'' ?>
 
                                       <?= (Yii::$app->session->get('Goal_Setting_Status') == 'Closed' && Yii::$app->session->get('Appraisal_Status') == 'Overview_Manager' )? $form->field($model, 'Overview_Manager_Comments')->textArea(['max-length' => 250, 'row' => 4,'placeholder' => 'Over View Manager Comment']):'' ?>
 
@@ -174,10 +174,27 @@ $script = <<<JS
         });
 
 
-/*Set KPI weight*/
-        disableSubmit();
-        $('#probationkpi-weight').change(function(e){
+//Toggle Disagreement Comment
+$('#probationkpi-disagreement_comments').hide();
+$('label[for="probationkpi-disagreement_comments"]').hide();
+$('#probationkpi-agree').change(function(e)
+{
+    const selected = e.target.value;
+    if(selected == 1) {
+        $('#probationkpi-disagreement_comments').hide();
+        $('label[for="probationkpi-disagreement_comments"]').hide();
+    }else{
+        $('#probationkpi-disagreement_comments').show();
+        $('label[for="probationkpi-disagreement_comments"]').show();
+    }
+});
 
+
+
+/*Set KPI weight*/
+       
+        $('#probationkpi-weight').change(function(e){
+        disableSubmit();
         const Weight = e.target.value;
         const Appraisal_No = $('#probationkpi-appraisal_no').val();
         const Line_No = $('#probationkpi-line_no').val();

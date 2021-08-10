@@ -53,7 +53,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
             <div class="card-body info-box">
 
                 <div class="row">
-                    <?php if(($model->Goal_Setting_Status == 'New' && $model->isAppraisee()) || $model->Appraisal_Status == 'Agreement_Level'): ?>
+                    <?php if(($model->Goal_Setting_Status == 'New' && $model->isAppraisee()) ): ?>
 
                                 <div class="col-md-4">
 
@@ -194,7 +194,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
 
                             <!-- Send Probation to Overview -->
 
-                            <?= Html::a('<i class="fas fa-forward"></i> Submit ',['submitprobationtooverview','appraisalNo'=> $model->Appraisal_No,'employeeNo' => $model->Employee_No],
+                            <?= Html::a('<i class="fas fa-forward"></i> Overview ',['submitprobationtooverview','appraisalNo'=> $model->Appraisal_No,'employeeNo' => $model->Employee_No],
                                 [
 
                                 'class' => 'mx-1 btn btn-app submitforapproval','data' => [
