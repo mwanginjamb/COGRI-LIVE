@@ -14,7 +14,7 @@ use yii\helpers\Html;
 
 $this->title = Yii::$app->params['generalTitle'];
 $this->params['breadcrumbs'][] = ['label' => 'Performance Management', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => 'Probation Goals to Approve - Overview Mgr. List', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Goals to Approve - Overview Mgr. List', 'url' => ['index']];
 ?>
 
 

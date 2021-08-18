@@ -74,7 +74,7 @@ $absoluteUrl = \yii\helpers\Url::home(true);
                             <?= $form->field($model, 'Limit_Amount')->textInput(['readonly'=> true,'disabled'=>true]) ?>
                             <?= $form->field($model, 'Used_Amount')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
                             <?= $form->field($model, 'Balance_Before')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
-                            <?= $form->field($model, 'Receipt_Amount')->textInput(['required'=> true]) ?>
+                            <?= $form->field($model, 'Receipt_Amount')->textInput(['disabled'=> true, 'receipt' => 'amount']) ?>
                             <?= $form->field($model, 'Visit_Amount')->textInput(['type' => 'number']) ?>
                             <?= $form->field($model, 'Balance_After')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
 

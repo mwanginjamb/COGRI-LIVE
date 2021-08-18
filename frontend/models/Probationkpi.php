@@ -28,7 +28,7 @@ public $Agree_Ex;
 public $Disagreement_Comments_Ex;
 public $Employee_Comments_Ex;
 public $End_Year_Supervisor_Comments_E;
-public $KRA_Line_No;
+public $KRA_Line_No; public $KRA;
 public $Overview_Manager_Comments;
 public $Line_No;
 public $Key;

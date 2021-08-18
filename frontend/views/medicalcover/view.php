@@ -127,7 +127,7 @@ Yii::$app->session->set('isSupervisor',false);*/
                                 <?= $form->field($model, 'Limit_Amount')->textInput(['readonly'=> true,'disabled'=>true]) ?>
                                 <?= $form->field($model, 'Used_Amount')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
                                 <?= $form->field($model, 'Balance_Before')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
-                                <?= $form->field($model, 'Receipt_Amount')->textInput(['required'=> true,'readonly'=> true]) ?>
+                                <?= $form->field($model, 'Receipt_Amount')->textInput(['disabled' => true,'readonly'=> true]) ?>
                                 <?= $form->field($model, 'Visit_Amount')->textInput(['required'=> true,'readonly'=> true]) ?>
                                
                             <p class="parent"><span>+</span>

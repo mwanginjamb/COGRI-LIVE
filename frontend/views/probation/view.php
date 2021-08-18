@@ -55,9 +55,10 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                 <div class="row">
                     <?php if(($model->Goal_Setting_Status == 'New' && $model->isAppraisee()) ): ?>
 
-                                <div class="col-md-4">
+                                <div class="col-md-4 mx-1">
 
-                                    <?= Html::a('<i class="fas fa-forward"></i> submit',['submit','appraisalNo'=> $model->Appraisal_No,'employeeNo' => $model->Employee_No],['class' => 'btn btn-app submitforapproval','data' => [
+                                    <?= Html::a('<i class="fas fa-forward"></i> submit',['submit','appraisalNo'=> $model->Appraisal_No,'employeeNo' => $model->Employee_No],[
+                                            'class' => 'btn btn-app submitforapproval','data' => [
                                             'confirm' => 'Are you sure you want to submit this appraisal to supervisor ?',
                                             'method' => 'post',
                                         ],
@@ -121,7 +122,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                                     'class' => 'mx-1 btn btn-app bg-danger rejectgoals',
                                     'rel' => $_GET['Appraisal_No'],
                                     'rev' => $_GET['Employee_No'],
-                                    'title' => 'Submit Probation  Back to Line Manager'
+                                    'title' => 'Submit Goals  Back to Line Manager'
 
                             ]) ?>
                         </div>
@@ -215,7 +216,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
 
                     <?php if($model->Appraisal_Status == 'Overview_Manager' && $model->isOverview()): ?>
                         
-                        <div class="col-md-4">
+                        <div class="col-md-4 mx-1">
 
                             <?= Html::a('<i class="fas fa-backward"></i> To Line Mgr.',['overviewbacktolinemgr','appraisalNo'=> $model->Appraisal_No,'employeeNo' => $model->Employee_No],
                                 [
@@ -228,7 +229,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
 
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 mx-1">
 
                             <?= Html::a('<i class="fas fa-check"></i> Approve',['approveprobationoverview','appraisalNo'=> $model->Appraisal_No,'employeeNo' => $model->Employee_No],
                                 [
@@ -251,7 +252,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
 
                     <?php if($model->Appraisal_Status == 'HR_Level' && $model->Hr_UserId == Yii::$app->user->identity->getId() ): ?>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 mx-1">
 
                             <?= Html::a('<i class="fas fa-forward"></i> Approve',['close','appraisalNo'=> $_GET['Appraisal_No'],'employeeNo' => $_GET['Employee_No']],['class' => 'btn bg-success btn-app submitforapproval','data' => [
                                 'confirm' => 'Are you sure you want to approve this appraisal?',
@@ -262,9 +263,9 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                             ]) ?>
                         </div>
 
-                        <div class="col-md-4">&nbsp;</div>
+                        <div class="col-md-4 mx-1 ">&nbsp;</div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 mx-1">
 
                             <?= Html::a('<i class="fas fa-backward"></i> Send Back',['backtosuper','appraisalNo'=> $_GET['Appraisal_No'],'employeeNo' => $_GET['Employee_No']],['class' => 'btn btn-app bg-danger submitforapproval','data' => [
                                 'confirm' => 'Are you sure you want to send back this appraisal to supervisor ?',
@@ -279,9 +280,9 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
 
                     <?php endif; ?>
 
-                    <div class="col-md-4">
-                             <?=  ($model->Appraisal_Status == 'Closed')?Html::a('<i class="fas fa-book-open"></i> P.A Report',['report','appraisalNo'=> $_GET['Appraisal_No'],'employeeNo' => $_GET['Employee_No']],[
-                                'class' => 'btn btn-app bg-success  pull-right',
+                    <div class="col-md-4 mx-1">
+                             <?=  Html::a('<i class="fas fa-book-open"></i> P.A Report',['report','appraisalNo'=> $_GET['Appraisal_No'],'employeeNo' => $_GET['Employee_No']],[
+                                'class' => 'btn btn-app bg-success ',
                                 'title' => 'Generate Performance Appraisal Report',
                                 'target'=> '_blank',
                                 'data' => [
@@ -291,7 +292,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                                         'employeeNo' => $_GET['Employee_No'],
                                     ],
                                     'method' => 'post',]
-                            ]):'';
+                            ]);
                             ?>
                     </div>
                     
@@ -458,7 +459,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                          foreach($model->objectives as $obj):
                             $updateLink = Html::a('<i class="fa fa-edit"></i>',['objective/update','Line_No'=> $obj->Line_No,'Employee_No'=>$model->Employee_No,'Appraisal_No' => $model->Appraisal_No],['class' => 'mx-1 update-objective btn btn-xs btn-outline-info', 'title' => 'Update Key Result Area']);
                              $deleteLink = Html::a('<i class="fa fa-trash"></i>',['objective/delete','Key'=> $obj->Key ],['class'=>'mx-1 delete btn btn-danger btn-xs', 'title' => 'Delete Key Result Area']);
-                             $addKpi = Html::a('<i class="fa fa-plus-square"></i>',['probation-kpi/create','Employee_No'=>$model->Employee_No,'Appraisal_No' => $model->Appraisal_No,'KRA_Line_No' => $obj->Line_No  ],['class'=>'mx-1 add btn btn-success btn-xs','title' => 'Add a Key Performance Indicator']);
+                             $addKpi = Html::a('<i class="fa fa-plus-square"></i>',['probation-kpi/create','Employee_No'=>$model->Employee_No,'Appraisal_No' => $model->Appraisal_No,'KRA_Line_No' => $obj->Line_No,'KRA_KEY' => $obj->Key  ],['class'=>'mx-1 add btn btn-success btn-xs','title' => 'Add a Key Performance Indicator']);
                          ?>
                                 <tr class="parent">
                                      <td><span>+</span></td>
@@ -466,7 +467,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                                     <td><?= !empty($obj->Overall_Rating)?$obj->Overall_Rating:'Not Set' ?></td>
                                     <td><?= !empty($obj->Total_Weigth)?$obj->Total_Weigth:'Not Set' ?></td>
                                     <td><?= !empty($obj->Maximum_Weight)?$obj->Maximum_Weight:'Not Set' ?></td>
-                                    <td><?=($model->Goal_Setting_Status == 'New')?$updateLink.$addKpi:'' ?></td>
+                                    <td><?=($model->Goal_Setting_Status == 'New')?$addKpi:'' ?></td>
                                 </tr>
                                 <tr class="child">
                                     <td colspan="6" >
@@ -481,6 +482,8 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                                                     <td><b>Employee Comment</b></td>
                                                     <td><b>Appraiser Rating</b></td>
                                                     <td><b>Supervisor Comments</b></td>
+                                                    <td><b>Agreement Status</b></td>
+                                                    <td><b>Agree Comments</b></td>
                                                     
                                                     <?php if($model->Probation_Recomended_Action == 'Extend_Probation'): ?>
                                                         <td><b>Extension Self Rating</b></td>
@@ -497,9 +500,14 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                                                 <tbody>
                                                 <?php if(is_array($model->getKpi($obj->Line_No))){
 
-                                                    foreach($model->getKpi($obj->Line_No) as $kpi):
 
-                             $updateLink = Html::a('<i class="fa fa-edit"></i>',['probation-kpi/update','Key'=> $kpi->Key],['class' => 'mx-1 update-objective btn btn-xs btn-outline-info', 'title' => 'Update Key Result Area']);
+                                                foreach($model->getKpi($obj->Line_No) as $kpi):
+                                                        
+
+                    
+                            $agreement = ($kpi->Agree && !empty($kpi->Agree))?'Agreed':'Disagreed';
+
+                             $updateLink = Html::a('<i class="fa fa-edit"></i>',['probation-kpi/update','Key'=> $kpi->Key,'KRA_KEY' => $obj->Key],['class' => 'mx-1 update-objective btn btn-xs btn-outline-info', 'title' => 'Update Key Result Area']);
                              $deleteLink = ($model->Goal_Setting_Status == 'New')?Html::a('<i class="fa fa-trash"></i>',['probation-kpi/delete','Key'=> $kpi->Key ],['class'=>'mx-1 delete btn btn-danger btn-xs', 'title' => 'Delete Key Performance Indicator/ Objective']):'';
 
 
@@ -512,6 +520,8 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
                                                 <td><?= !empty($kpi->Employee_Comments)?$kpi->Employee_Comments:'Not Set' ?></td>
                                                 <td><?= !empty($kpi->Appraiser_Rating)?$kpi->Appraiser_Rating:'Not Set' ?></td>
                                                 <td><?= !empty($kpi->Supervisor_Comments)?$kpi->Supervisor_Comments:'Not Set' ?></td>
+                                                <td><?= $agreement  ?></td>
+                                                <td><?= !empty($kpi->Disagreement_Comments)?$kpi->Disagreement_Comments:'Not Set' ?></td>
                                                 
                                                 
 
@@ -564,7 +574,7 @@ Yii::$app->session->set('Goal_Setting_Status',$model->Goal_Setting_Status);
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel" style="position: absolute">Probation Appraisal</h4>
+                <h4 class="modal-title" id="myModalLabel" style="position: absolute">Appraisal</h4>
             </div>
             <div class="modal-body">
 

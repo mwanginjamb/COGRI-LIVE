@@ -38,6 +38,7 @@ $absoluteUrl = \yii\helpers\Url::home(true);
 
 
 
+                                    <?= $form->field($model, 'KRA')->textarea(['readonly' => true,'disabled' => true]) ?>
                                     <?= $form->field($model, 'Appraisal_No')->hiddenInput(['readonly' => true])->label(false) ?>
 
                                     <?= $form->field($model, 'Employee_No')->hiddenInput(['readonly' => true])->label(false) ?>
@@ -78,8 +79,8 @@ $absoluteUrl = \yii\helpers\Url::home(true);
                                      <?= (Yii::$app->session->get('Goal_Setting_Status') == 'Closed' && Yii::$app->session->get('Appraisal_Status') == 'Supervisor_Level')? $form->field($model, 'Supervisor_Comments')->textInput(['type' => 'text']): '' ?>
 
                                      <?= (Yii::$app->session->get('Goal_Setting_Status') == 'Closed' && Yii::$app->session->get('Appraisal_Status') == 'Agreement_Level')?$form->field($model, 'Agree')->dropDownList([
-                                        true => 'I agree', false => 'I disagree'
-                                     ]): '' ?>
+                                        1 => 'I agree',0 => 'I disagree'
+                                     ],['prompt' => 'Select ...']): '' ?>
 
                                       <?= (Yii::$app->session->get('Appraisal_Status') == 'Agreement_Level') ? $form->field($model, 'Disagreement_Comments')->textArea(['max-length' => 250, 'row' => 4,'placeholder' => 'Your Comment']):'' ?>
 
@@ -146,7 +147,7 @@ $absoluteUrl = \yii\helpers\Url::home(true);
                 <div class="row">
 
                     <div class="form-group">
-                        <?= Html::submitButton(($model->isNewRecord)?'Save':'Update', ['class' => 'btn btn-success','id'=>'submit']) ?>
+                        <?= Html::submitButton(($model->isNewRecord)?'Add KPI':'Update KPI', ['class' => 'btn btn-success','id'=>'submit']) ?>
                     </div>
 
 
@@ -192,9 +193,17 @@ $('#probationkpi-agree').change(function(e)
 
 
 /*Set KPI weight*/
+
+        $('#probationkpi-weight').focus(function(){
+            disableSubmit();
+        });
+
+        $('#probationkpi-weight').blur(function(){
+            enableSubmit();
+        });
        
         $('#probationkpi-weight').change(function(e){
-        disableSubmit();
+       
         const Weight = e.target.value;
         const Appraisal_No = $('#probationkpi-appraisal_no').val();
         const Line_No = $('#probationkpi-line_no').val();

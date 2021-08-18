@@ -71,6 +71,15 @@ class ProbationKpiController extends Controller
 
         $model = new Probationkpi();
         $service = Yii::$app->params['ServiceName']['ProbationKPIs'];
+        $model->isNewRecord = true;
+        $model->Agree = true;
+
+
+        $Objservice = Yii::$app->params['ServiceName']['NewEmpObjectives'];
+        $ObjKey = Yii::$app->request->get('KRA_KEY');
+
+        $KRA_OBJ = Yii::$app->navhelper->readByKey($Objservice, $ObjKey);
+        $model->KRA = $KRA_OBJ->Objective;
 
          /*Do initial request */
          if(!isset(Yii::$app->request->post()['Probationkpi'])){
@@ -167,8 +176,15 @@ class ProbationKpiController extends Controller
         $model = new Probationkpi() ;
         $model->isNewRecord = false;
         $service = Yii::$app->params['ServiceName']['ProbationKPIs'];
+
         
         $result = Yii::$app->navhelper->readByKey($service, $Key);
+
+        $Objservice = Yii::$app->params['ServiceName']['NewEmpObjectives'];
+        $ObjKey = Yii::$app->request->get('KRA_KEY');
+
+        $KRA_OBJ = Yii::$app->navhelper->readByKey($Objservice, $ObjKey);
+        $model->KRA = $KRA_OBJ->Objective;
 
         if(is_object($result)){
             //load nav result to model
@@ -178,10 +194,14 @@ class ProbationKpiController extends Controller
         }
 
         //  Yii::$app->navhelper->loadpost(Yii::$app->request->post()['Probationkpi'],$model)
+
         if(Yii::$app->request->post() && Yii::$app->navhelper->loadpost(Yii::$app->request->post()['Probationkpi'],$model) && $model->validate() ){
+            $model->Agree = ($model->Agree == 0)?FALSE:TRUE;
             $result = Yii::$app->navhelper->updateData($service,$model);
 
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            // return $result;
             if(!is_string($result)){
 
                 return ['note' => '<div class="alert alert-success">KPI Updated Successfully. </div>' ];

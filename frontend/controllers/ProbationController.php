@@ -230,7 +230,7 @@ class ProbationController extends Controller
             $model = Yii::$app->navhelper->loadmodel($appraisal[0],$model);
         }
 
-        //Yii::$app->recruitment->printrr($model->getObjectives());
+        // Yii::$app->recruitment->printrr($model->getObjectives());
 
         $appraisal_status = [
             '_blank_' => '_blank_',
@@ -665,11 +665,11 @@ class ProbationController extends Controller
 
         if(!is_string($result)){
             Yii::$app->session->setFlash('success', 'Appraisal Submitted Successfully.', true);
-            return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
+            return $this->redirect(['index']);
         }else{
 
             Yii::$app->session->setFlash('error', 'Error Submitting Appraisal : '. $result);
-            return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
+            return $this->redirect(['index']);
 
         }
 
@@ -809,11 +809,11 @@ public function actionEybacktolinemgr()
 
         if(!is_string($result)){
             Yii::$app->session->setFlash('success', 'Appraisal Goals Approved Successfully.', true);
-            return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
+            return $this->redirect(['superglist']);
         }else{
 
             Yii::$app->session->setFlash('error', 'Error   : '. $result);
-            return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
+            return $this->redirect(['superglist']);
 
         }
 
@@ -892,11 +892,11 @@ public function actionEybacktolinemgr()
 
         if(!is_string($result)){
             Yii::$app->session->setFlash('success', 'Sent Back Line Manager with comments Successfully.', true);
-            return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
+            return $this->redirect(['superglist']);
         }else{
 
             Yii::$app->session->setFlash('error', 'Error Line Manager : '. $result);
-            return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
+            return $this->redirect(['superglist']);
 
         }
 
@@ -1005,11 +1005,11 @@ public function actionEybacktolinemgr()
 
         if(!is_string($result)){
             Yii::$app->session->setFlash('success', ' Appraisal Submitted Successfully.', true);
-            return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
+            return $this->redirect(['superproblist']);
         }else{
 
             Yii::$app->session->setFlash('error', 'Error Submitting Appraisal : '. $result);
-            return $this->redirect(['view','Appraisal_No' => $appraisalNo,'Employee_No' => $employeeNo]);
+            return $this->redirect(['superproblist']);
 
         }
 

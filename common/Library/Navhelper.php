@@ -215,6 +215,8 @@ class Navhelper extends Component{
 
     }
 
+    
+
     //Generate Invoice
     public function GenerateInvoice($service,$data){
         $identity = \Yii::$app->user->identity;
