@@ -555,6 +555,8 @@ class ImprestController extends Controller
                         'Purpose' => !empty($item->Purpose)?$item->Purpose:'',
                         'Imprest_Amount' => !empty($item->Imprest_Amount)?$item->Imprest_Amount:'',
                         'Status' => $item->Status,
+                        'Posted' => ($item->Posted)?'Yes':'No',
+                        'Surrendered' => ($item->Surrendered)?'Yes':'No',
                         'Action' => $link,
                         'Update_Action' => $updateLink,
                         'view' => $Viewlink
@@ -626,7 +628,8 @@ class ImprestController extends Controller
         $filter = [
             'Employee_No' => Yii::$app->user->identity->Employee[0]->No,
             'Status' => 'Approved',
-            'Posted' =>  true
+            'Posted' =>  true,
+            'Surrendered' => false
                        
         ];
 

@@ -87,9 +87,11 @@ $script = <<<JS
                 { title: 'Employee No' ,data: 'Employee_No'},
                 { title: 'Employee Name' ,data: 'Employee_Name'},
                 { title: 'Purpose' ,data: 'Purpose'},
-                { title: 'Imprest_Amount' ,data: 'Imprest_Amount'},
+                { title: 'Imprest Amount' ,data: 'Imprest_Amount'},
                 
                 { title: 'Status' ,data: 'Status'},
+                { title: 'Posted' ,data: 'Posted'},
+                { title: 'Surrendered' ,data: 'Surrendered'},
                 { title: 'Action', data: 'Action' },
                 { title: 'Update Action', data: 'Update_Action' },
                 { title: 'Details', data: 'view' },

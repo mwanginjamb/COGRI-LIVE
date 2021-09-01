@@ -711,7 +711,7 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
                             <ul class="nav nav-treeview">
 
 
-                                <li class="nav-item">
+                               <!-- <li class="nav-item">
                                     <a href="<?= $absoluteUrl ?>imprest/create?requestfor=Self" class="nav-link <?= Yii::$app->recruitment->currentaction('imprest','create')?'active':'' ?>">
                                         <i class="fa fa-check-square nav-icon"></i>
                                         <p> Imprest Request (Self)</p>
@@ -723,16 +723,16 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
                                         <i class="fa fa-check-square nav-icon"></i>
                                         <p> Imprest Request (Other)</p>
                                     </a>
-                                </li>
+                                </li>-->
 
                                 <li class="nav-item">
                                     <a href="<?= $absoluteUrl ?>imprest" class="nav-link <?= Yii::$app->recruitment->currentaction('imprest','index')?'active':'' ?>">
                                         <i class="fa fa-check-square nav-icon"></i>
-                                        <p> Imprest List</p>
+                                        <p> Imprests </p>
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
+                                <!--<li class="nav-item">
                                     <a href="<?= $absoluteUrl ?>imprest/create-surrender?requestfor=Self" class="nav-link <?= Yii::$app->recruitment->currentaction('imprest','create-surrender')?'active':'' ?>">
                                         <i class="fa fa-check-square nav-icon"></i>
                                         <p> surrender (Self)</p>
@@ -744,12 +744,12 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
                                         <i class="fa fa-check-square nav-icon"></i>
                                         <p> Surrender (Other)</p>
                                     </a>
-                                </li>
+                                </li>-->
 
                                 <li class="nav-item">
                                     <a href="<?= $absoluteUrl ?>imprest/surrenderlist" class="nav-link <?= Yii::$app->recruitment->currentaction('imprest','surrenderlist')?'active':'' ?>">
                                         <i class="fa fa-check-square nav-icon"></i>
-                                        <p> Imprest Surrender List</p>
+                                        <p> Imprest Surrender</p>
                                     </a>
                                 </li>
 
