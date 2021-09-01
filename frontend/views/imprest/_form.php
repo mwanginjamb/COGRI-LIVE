@@ -32,18 +32,6 @@ if(Yii::$app->session->hasFlash('success')){
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title"><?= Html::encode($this->title) ?></h3>
-
-
-                <?php if(Yii::$app->session->hasFlash('success')): ?>
-                    <div class="alert alert-success"><?= Yii::$app->session->getFlash('success')?></div>
-                <?php endif; ?>
-
-                <?php if(Yii::$app->session->hasFlash('error')): ?>
-                    <div class="alert alert-danger"><?= Yii::$app->session->getFlash('error')?></div>
-                <?php endif; ?>
-
-
-
             </div>
             <div class="card-body">
 
