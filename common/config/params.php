@@ -2,9 +2,9 @@
 return [
     'generalTitle' => 'Employee - Self Service',
     'demoCompany' => 'IANSOFT LTD',
-    'adminEmail' => 'cogri.support@softeboard.com',
-    'supportEmail' => 'cogri.support@softeboard.com',
-    'senderEmail' => 'cogri.support@softeboard.com',
+    'adminEmail' => 'erp@nyumbani.org',
+    'supportEmail' => 'erp@nyumbani.org',
+    'senderEmail' => 'erp@nyumbani.org',
     'senderName' => 'HRMIS mailer',
     'user.passwordResetTokenExpire' => 3600,
     'powered' => 'Iansoft Technologies Ltd.',
@@ -24,12 +24,12 @@ return [
     'adServer' => 'KRB-SVR7.KRBHQS.GO.KE', //Active directory domain controller
 
     //sharepoint config
-    'sharepointUrl' => 'https://aaofsciences.sharepoint.com',//'https://ackads.sharepoint.com',
-    'sharepointUsername' => 'Navision@aasciences.africa',//'francis@ackads.onmicrosoft.com',
-    'sharepointPassword' => 'Nav9orta7',// Sp password
+    'sharepointUrl' => '',//'https://ackads.sharepoint.com',
+    'sharepointUsername' => '',//'francis@ackads.onmicrosoft.com',
+    'sharepointPassword' => '',// Sp password
     'library' => 'Portal',// Sharepoint Library,
-    'clientID' => '7e92ce54-e4bf-491a-bef6-eb94044ce297', // SP App Client ID
-    'clientSecret' => 'Q6UJkB3bRlPkGBjWNgrQVCyyjL2vgi5rtP7THpLwJ+s=', // SP Client Secret
+    'clientID' => '', // SP App Client ID
+    'clientSecret' => '', // SP Client Secret
 
     'profileControllers' => [
         'applicantprofile',

@@ -74,23 +74,22 @@ class StorerequisitionlineController extends Controller
     public function actionCreate($No){
        $service = Yii::$app->params['ServiceName']['StoreRequisitionLine'];
        $model = new Storerequisitionline();
+       $model->Type =  'Item'; 
 
         if(Yii::$app->request->get('No') && !Yii::$app->request->post()){
 
                 $model->Requisition_No = $No;
                 $result = Yii::$app->navhelper->postData($service, $model);
-                //Yii::$app->recruitment->printrr($result);
-
+                if(is_string($result)){
+                    return '<div class="alert alert-danger">Error Creating Requisition Line: '.$result.'</div>';
+                }
                 Yii::$app->navhelper->loadmodel($result,$model);
         }
         
 
         if(Yii::$app->request->post() && Yii::$app->navhelper->loadpost(Yii::$app->request->post()['Storerequisitionline'],$model) ){
 
-            $filter = [
-                'Requisition_No' => $model->Requisition_No,
-            ];
-
+            
             $result = Yii::$app->navhelper->updateData($service,$model);
 
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -141,8 +140,8 @@ class StorerequisitionlineController extends Controller
             $filter = [
                 'Requisition_No' => $model->Requisition_No,
             ];
-            $refresh = Yii::$app->navhelper->getData($service, $filter);
-            $model->Key = $refresh[0]->Key;
+            $refresh = Yii::$app->navhelper->readbykey($service, $model->Key);
+            $model->Key = $refresh->Key;
 
             //Yii::$app->recruitment->printrr($model);
 
@@ -299,14 +298,16 @@ class StorerequisitionlineController extends Controller
         $filter = [
             'Line_No' => Yii::$app->request->post('Line_No')
         ];
+        // Yii::$app->recruitment->printrr(Yii::$app->request->post());
+
         $line = Yii::$app->navhelper->getData($service, $filter);
-        // Yii::$app->recruitment->printrr($line);
         if(is_array($line)){
             Yii::$app->navhelper->loadmodel($line[0],$model);
             $model->Key = $line[0]->Key;
             $model->No = Yii::$app->request->post('No');
 
         }
+        $model->Type =  'Item'; 
 
         $result = Yii::$app->navhelper->updateData($service,$model);
 

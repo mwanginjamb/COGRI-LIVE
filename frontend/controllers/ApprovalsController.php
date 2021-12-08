@@ -101,7 +101,7 @@ class ApprovalsController extends Controller
         $service = Yii::$app->params['ServiceName']['RequestsTo_ApprovePortal'];
 
         $filter = [
-            //'Employee_No' => Yii::$app->user->identity->{'Employee_No'},
+            // 'Status' => 'Open',
             'Approver_No' => Yii::$app->user->identity->{'Employee_No'},
         ];
         $approvals = \Yii::$app->navhelper->getData($service,$filter);
@@ -300,7 +300,7 @@ class ApprovalsController extends Controller
                     // 'ToApprove' => $app->ToApprove,
                     'Details' => $app->Details,
                     'Comment' => $app->Comment,
-                    'Sender_ID' => $app->Sender_Name,
+                    'Sender_ID' => isset($app->Sender_Name)?$app->Sender_Name:'',
                     'Document_Type' => $app->Document_Type,
                     'Status' => $app->Status,
                     'Document_No' => $app->Document_No,

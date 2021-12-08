@@ -37,11 +37,12 @@ public $ShortcutDimCode_x005B_7_x005D_;
 public $ShortcutDimCode_x005B_8_x005D_;
 public $Shortcut_Dimension_1_Code;
 public $Shortcut_Dimension_2_Code;
+public $Type;
 
     public function rules()
     {
         return [
-
+            [['Shortcut_Dimension_1_Code','Shortcut_Dimension_2_Code'],'required']
         ];
     }
 

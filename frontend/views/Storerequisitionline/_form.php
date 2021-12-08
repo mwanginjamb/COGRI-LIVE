@@ -28,8 +28,8 @@ $absoluteUrl = \yii\helpers\Url::home(true);
                                     <?= $form->field($model, 'No')->dropDownList($items, ['prompt' => 'Select Item...']) ?>
                                     <?= $form->field($model, 'Location')->dropDownList($locations, ['prompt' => 'Select Location...']) ?>
                                     <?= $form->field($model, 'Quantity')->textInput(['type' => 'number']) ?>
-                                    <?= $form->field($model, 'Key')->hiddenInput(['readonly'=> true])->label(false) ?>
-                                    <?= $form->field($model, 'Line_No')->hiddenInput(['readonly'=> true, 'disabled' => true])->label(false) ?>
+                                    
+                                    <?= $form->field($model, 'Line_No')->hiddenInput(['readonly'=> true])->label(false) ?>
                                     <?= $form->field($model, 'Available_Quantity')->textInput(['readonly'=> true,'disabled' => true]); ?>
 
                             </div>
@@ -39,6 +39,8 @@ $absoluteUrl = \yii\helpers\Url::home(true);
                                 <?= $form->field($model, 'Shortcut_Dimension_1_Code')->dropDownList($programs, ['prompt' => 'Select ...']) ?>
 
                                  <?= $form->field($model, 'Shortcut_Dimension_2_Code')->dropDownList($departments, ['prompt' => 'Select ...']) ?>
+
+                                 <?= $form->field($model, 'Key')->hiddenInput(['readonly'=> true])->label() ?>
 
                                 <?php //$form->field($model, 'ShortcutDimCode_x005B_3_x005D_')->dropDownList($students, ['prompt' => 'Select ...']) ?>
 

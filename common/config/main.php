@@ -41,10 +41,10 @@ return [
             'useFileTransport' => false,
              'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'mail.softeboard.com',
-                'username' => 'customer@softeboard.com',
-                'password' => '@Customer1220#*',
-                'port' => '587',
+                'host' => 'mail.nyumbani.org',
+                'username' => 'erp@nyumbani.org',
+                'password' => '@ERP2020.',
+                'port' => '465',
 
             ],
         ],
