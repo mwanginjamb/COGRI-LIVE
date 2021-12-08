@@ -89,6 +89,10 @@ return [
         'LeaveRecallCard' => 'LeaveRecallCard', // 50064
         'LeaveAttachments' => 'LeaveAttachments', //50031
 
+        /**************************Leave Allowance*************************************/
+
+        'LeaveAllowanceCard' => 'LeaveAllowanceCard', // 58043
+        'LeaveAllowanceApplication' => 'LeaveAllowanceApplication', //58042
 
         /************************** Fund Requisition *************************************/
 
