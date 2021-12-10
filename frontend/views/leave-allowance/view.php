@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Leave Allowance Card', 'url' => ['
             'data' => [
                 'confirm' => 'Are you sure you want to send this document for approval?',
                 'params'=>[
-                    'No'=> $_GET['No'],
+                    'No'=> $model->No,
                     'employeeNo' => Yii::$app->user->identity->{'Employee_No'},
                 ],
                 'method' => 'get',
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Leave Allowance Card', 'url' => ['
             'data' => [
             'confirm' => 'Are you sure you want to cancel leave allowance approval request?',
             'params'=>[
-                'No'=> $_GET['No'],
+                'No'=> $model->No,
             ],
             'method' => 'get',
         ],
@@ -94,41 +94,20 @@ $this->params['breadcrumbs'][] = ['label' => 'Leave Allowance Card', 'url' => ['
 
                     <div class="row">
                         <div class=" row col-md-12">
-                            <div class="col-md-6">
+                           <div class="col-md-6">
                                 <?= '<p><span>Employee No</span> '.Html::a($model->Employee_No,'#'); '</p>' ?>
                                 <?= '<p><span>Employee Name</span> '.Html::a($model->Employee_Name,'#'); '</p>' ?>
-                                <?= '<p><span>Program Code</span> '.Html::a($model->_x003C_Global_Dimension_1_Code_x003E_,'#'); '</p>' ?>
-                                <?= '<p><span>Department Code </span> '.Html::a($model->Global_Dimension_2_Code,'#'); '</p>' ?>
-                                <?= $form->field($model, 'No')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
-                                <?= $form->field($model, 'Application_Date')->textInput(['required' => true, 'disabled'=>true]) ?>
-                                <?= $form->field($model, 'User_ID')->textInput(['required' => true, 'disabled'=>true]) ?>
-                                <?= $form->field($model, 'Leave_Code')->textInput(['readonly' => true]) ?>
-                                <?= $form->field($model, 'Start_Date')->textInput(['type' => 'date','required' => true]) ?>
-                                <?= $form->field($model, 'Days_To_Go_on_Leave')->textInput(['type' => 'number','required' =>  true,'min'=> 1]) ?>
-                                <?= $form->field($model, 'End_Date')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
-                                <?= $form->field($model, 'Total_No_Of_Days')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
-                                <?= $form->field($model, 'Leave_balance')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
-
-
-
-
+                                <?= $form->field($model, 'Request_Type')->textInput(['readonly' => true]) ?>
+                                <?= $form->field($model, 'Payroll_Period')->textInput(['readonly' => true]) ?>
 
                             </div>
                             <div class="col-md-6">
-                                <?= $form->field($model, 'Holidays')->textInput(['readonly'=> true,'disabled'=>true]) ?>
-                                <?= $form->field($model, 'Weekend_Days')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
-                                <?= $form->field($model, 'Balance_After')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
-                                <?= $form->field($model, 'Reporting_Date')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
-                                <?= $form->field($model, 'Comments')->textarea(['rows'=> 2,'maxlength' => 250,'readonly' => true]) ?>
-                                <?= $form->field($model, 'Reliever')->textInput(['readonly' => true]) ?>
-
-                                <?= $form->field($model, 'Reliever_Name')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
-                                <?= $form->field($model, 'Status')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
-                                <?= '<p><span>Approval_Entries</span> '.Html::a($model->Approval_Entries,'#'); '</p>' ?>
-
-
-
-
+                               
+                                <?= '<p><span>Program Code</span> '.Html::a($model->Global_Dimension_1_Code,'#'); '</p>' ?>
+                                <?= '<p><span>Department Code </span> '.Html::a($model->Global_Dimension_2_Code,'#'); '</p>' ?>
+                                 <?= $form->field($model, 'Amount_Requested')->textInput(['type' => 'number','readonly' => true]) ?>
+                                <?= $form->field($model, 'Status')->textInput(['readonly' => true]) ?>
+                                <?= (!empty($model->Rejection_Reason))?$form->field($model, 'Rejection_Reason')->textInput(['readonly' => true]):'' ?>
                             </div>
                         </div>
                     </div>

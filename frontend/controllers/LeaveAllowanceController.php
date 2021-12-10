@@ -85,8 +85,8 @@ class LeaveAllowanceController extends Controller
             if(is_object($request) )
             {
                 // Yii::$app->navhelper->loadmodel($request,$model);
-                Yii::$app->session->setFlash('success', 'Document Initialized SUccessfully. ', true);
-                return $this->redirect(['update','No' => $model->No]);
+                Yii::$app->session->setFlash('success', 'Document Initialized Successfully, please send it for approval using action buttons above. ', true);
+                return $this->redirect(['update','No' => $request->No]);
             }else{
                 Yii::$app->session->setFlash('error', 'Error : ' . $request, true);
                 return $this->redirect(['index']);
@@ -132,13 +132,13 @@ class LeaveAllowanceController extends Controller
     }
 
     public function actionView($No){
-        $model = new Leave();
-        $service = Yii::$app->params['ServiceName']['LeaveCard'];
+        $model = new LeaveAllowance();
+        $service = Yii::$app->params['ServiceName']['LeaveAllowanceCard'];
 
         $result = Yii::$app->navhelper->findOne($service,'No',$No);
 
         //load nav result to model
-        $model = $this->loadtomodel($result, $model);
+        $model = Yii::$app->navhelper->loadmodel($result, $model);
 
         //Yii::$app->recruitment->printrr($model);
 

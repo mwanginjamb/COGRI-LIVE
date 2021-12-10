@@ -11,6 +11,42 @@ $absoluteUrl = \yii\helpers\Url::home(true);
 ?>
 
 <div class="row">
+    <div class="col-md-4">
+
+        <?= ($model->Status == 'New')?Html::a('<i class="fas fa-paper-plane"></i> Send Approval Req',
+            ['send-for-approval'],
+            [
+                'class' => 'btn btn-app submitforapproval',
+                'data' => [
+                    'confirm' => 'Are you sure you want to send this document for approval?',
+                    'params'=>[
+                        'No'=> $model->No,
+                        'employeeNo' => Yii::$app->user->identity->{'Employee_No'},
+                    ],
+                    'method' => 'get',
+                ],
+                'title' => 'Submit Approval Request',
+                
+
+
+        ]):'' ?>
+
+
+        <?= ($model->Status == 'Pending_Approval')?Html::a('<i class="fas fa-times"></i> Cancel Approval Req.',['cancel-request'],['class' => 'btn btn-app submitforapproval',
+            'data' => [
+            'confirm' => 'Are you sure you want to cancel leave allowance approval request?',
+            'params'=>[
+                'No'=> $model->No,
+            ],
+            'method' => 'get',
+        ],
+            'title' => 'Cancel Approval Request'
+
+        ]):'' ?>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
@@ -46,9 +82,10 @@ $absoluteUrl = \yii\helpers\Url::home(true);
 
                 </div>
                 <div class="col-md-6">
-                    <?= $form->field($model, 'Amount_Requested')->textInput(['type' => 'number','readonly' => true]) ?>
+                   
                     <?= '<p><span>Program Code</span> '.Html::a($model->Global_Dimension_1_Code,'#'); '</p>' ?>
                     <?= '<p><span>Department Code </span> '.Html::a($model->Global_Dimension_2_Code,'#'); '</p>' ?>
+                     <?= $form->field($model, 'Amount_Requested')->textInput(['type' => 'number','readonly' => true]) ?>
                     <?= $form->field($model, 'Status')->textInput(['readonly' => true]) ?>
                     <?= (!empty($model->Rejection_Reason))?$form->field($model, 'Rejection_Reason')->textInput(['readonly' => true]):'' ?>
                 </div>

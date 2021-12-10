@@ -252,7 +252,7 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
 <!--end Aprroval Management-->
 
 
-                        <li class="nav-item has-treeview  <?= Yii::$app->recruitment->currentCtrl(['leave','leavestatement','leaverecall','leaveplan'])?'menu-open':'' ?>">
+                        <li class="nav-item has-treeview  <?= Yii::$app->recruitment->currentCtrl(['leave','leavestatement','leaverecall','leaveplan','leave-allowance'])?'menu-open':'' ?>">
                             <a href="#" class="nav-link <?= Yii::$app->recruitment->currentCtrl('leave')?'active':'' ?>">
                                 <i class="nav-icon fas fa-paper-plane"></i>
                                 <p>
@@ -262,12 +262,12 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
                             </a>
                             <ul class="nav nav-treeview">
 
-                                <li class="nav-item">
+                                <!--<li class="nav-item">
                                     <a href="<?= $absoluteUrl ?>leave/create" class="nav-link <?= Yii::$app->recruitment->currentaction('leave','create')?'active':'' ?> ">
                                         <i class="fa fa-running nav-icon"></i>
                                         <p>New Leave Application</p>
                                     </a>
-                                </li>
+                                </li>-->
                                 <li class="nav-item">
                                     <a href="<?= $absoluteUrl ?>leave/" class="nav-link <?= Yii::$app->recruitment->currentaction('leave','index')?'active':'' ?>">
                                         <i class="fa fa-door-open nav-icon"></i>
@@ -307,6 +307,13 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
                                     <a href="<?= $absoluteUrl ?>leaveplan/index" class="nav-link <?= Yii::$app->recruitment->currentaction('leaveplan','index')?'active':'' ?>">
                                         <i class="fa fa-list nav-icon"></i>
                                         <p>Leave Plan List</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="<?= $absoluteUrl ?>leave-allowance/" class="nav-link <?= Yii::$app->recruitment->currentaction('leave-allowance','index')?'active':'' ?>">
+                                        <i class="fa fa-door-open nav-icon"></i>
+                                        <p>Leave Allowance List</p>
                                     </a>
                                 </li>
 

@@ -12,7 +12,7 @@ use yii\helpers\Html;
 /* @var $model frontend\models\AgendaDocument */
 
 $this->title = 'Leave Allowance Application';
-$this->params['breadcrumbs'][] = ['label' => 'Leaves', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Leaves Allowance Applications', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => 'New Request', 'url' => ['create']];
 //$this->params['breadcrumbs'][] = $this->title;
 

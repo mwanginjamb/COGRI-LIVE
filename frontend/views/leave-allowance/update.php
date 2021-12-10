@@ -12,8 +12,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\AgendaDocument */
 $this->title = 'Update Leave Allowance Application';
-$this->params['breadcrumbs'][] = ['label' => 'Leaves', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => 'Update Request', 'url' => ['update']];
+$this->params['breadcrumbs'][] = ['label' => 'Leave Allowance Applications', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Update Request', 'url' => ['update','No' =>  $model->No]];
 
 $model->isNewRecord = false;
 /*$now = date('m-d-Y');
