@@ -37,7 +37,7 @@ Yii::$app->session->set('isSupervisor',false);*/
         ]):'' ?>
 
 
-        <?= ($model->Status == 'Pending_Approval')?Html::a('<i class="fas fa-times"></i> Cancel Approval Req.',['cancel-request'],['class' => 'btn btn-app submitforapproval',
+        <?= ($model->Status == 'Pending_Approval' && !Yii::$app->request->get('Approval'))?Html::a('<i class="fas fa-times"></i> Cancel Approval Req.',['cancel-request'],['class' => 'btn btn-app submitforapproval',
             'data' => [
             'confirm' => 'Are you sure you want to cancel imprest approval request?',
             'params'=>[
