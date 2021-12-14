@@ -282,26 +282,26 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
+                                <!--<li class="nav-item">
                                     <a href="<?= $absoluteUrl ?>leaverecall/create/?create=1" class="nav-link <?= Yii::$app->recruitment->currentaction('leaverecall','create')?'active':'' ?>">
                                         <i class="fa fa-recycle nav-icon"></i>
                                         <p>Recall Leave</p>
                                     </a>
-                                </li>
+                                </li>-->
 
                                 <li class="nav-item">
                                     <a href="<?= $absoluteUrl ?>leaverecall/index" class="nav-link <?= Yii::$app->recruitment->currentaction('leaverecall','index')?'active':'' ?>">
-                                        <i class="fa fa-list nav-icon"></i>
+                                        <i class="fa fa-recycle nav-icon"></i>
                                         <p>Recall Leave List</p>
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
+                                <!--<li class="nav-item">
                                     <a href="<?= $absoluteUrl ?>leaveplan/create" class="nav-link <?= Yii::$app->recruitment->currentaction('leaveplan','create')?'active':'' ?>">
                                         <i class="fa fa-directions nav-icon"></i>
                                         <p>New Leave Plan</p>
                                     </a>
-                                </li>
+                                </li>-->
 
                                 <li class="nav-item">
                                     <a href="<?= $absoluteUrl ?>leaveplan/index" class="nav-link <?= Yii::$app->recruitment->currentaction('leaveplan','index')?'active':'' ?>">

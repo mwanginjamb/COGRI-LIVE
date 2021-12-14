@@ -236,6 +236,14 @@ class LeaverecallController extends Controller
         $results = \Yii::$app->navhelper->getData($service,$filter);
         $result = [];
         foreach($results as $item){
+
+
+
+            if(empty($item->Recall_No)) {
+                continue;
+            }
+
+
             $link = $updateLink = $deleteLink =  '';
             $Viewlink = Html::a('<i class="fas fa-eye"></i>',['view','No'=> $item->Recall_No ],['class'=>'btn btn-outline-primary btn-xs']);
             if($item->Status == 'New'){
