@@ -121,6 +121,12 @@ class ApprovalsController extends Controller
                             'confirm' => 'Are you sure you want to Approve this request?',
                             'method' => 'post',
                         ]]):'';
+
+                        $Rejectlink = ($app->Status == 'Open')? Html::a('Reject Request',['reject-request', 'docType' => 'Leave_Application' ],['class'=>'btn btn-warning reject btn-xs',
+                        'rel' => $app->Document_No,
+                        'rev' => $app->Record_ID_to_Approve,
+                        'name' => $app->Table_ID
+                    ]): "";
                     }
                     elseif(stripos($app->Details, 'Recall') !== FALSE)
                     {
@@ -132,6 +138,14 @@ class ApprovalsController extends Controller
                             'confirm' => 'Are you sure you want to Approve this request?',
                             'method' => 'post',
                         ]]):'';
+
+                        $Rejectlink = ($app->Status == 'Open')? Html::a('Reject Request',['reject-request', 'docType' => 'Leave_Application' ],['class'=>'btn btn-warning reject btn-xs',
+                        'rel' => $app->Document_No,
+                        'rev' => $app->Record_ID_to_Approve,
+                        'name' => $app->Table_ID
+                    ]): "";
+
+
                     }
                     elseif(stripos($app->Details, 'Plan') !== FALSE)
                     {
@@ -143,6 +157,15 @@ class ApprovalsController extends Controller
                             'confirm' => 'Are you sure you want to Approve this request?',
                             'method' => 'post',
                         ]]):'';
+
+
+                        $Rejectlink = ($app->Status == 'Open')? Html::a('Reject Request',['reject-request', 'docType' => 'Leave_Plan' ],['class'=>'btn btn-warning reject btn-xs',
+                        'rel' => $app->Document_No,
+                        'rev' => $app->Record_ID_to_Approve,
+                        'name' => $app->Table_ID
+                    ]): "";
+
+
                     }elseif($app->Document_Type == 'Requisition_Header') // Purchase Requisition
                     {
                         $Approvelink = ($app->Status == 'Open')? Html::a('Approve Request',['approve-request','app'=> $app->Document_No, 'empNo' => $app->Approver_No, 'docType' => 'Requisition_Header'  ],['class'=>'btn btn-success btn-xs','data' => [
@@ -255,55 +278,55 @@ class ApprovalsController extends Controller
 
 
                     if($app->Document_Type == 'Staff_Board_Allowance'){
-                        $detailsLink = Html::a('View Details',['fund-requisition/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['fund-requisition/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Imprest')
                     {
-                        $detailsLink = Html::a('View Details',['imprest/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['imprest/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Salary_Advance')
                     {
-                        $detailsLink = Html::a('View Details',['salaryadvance/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['salaryadvance/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Requisition_Header')
                     {
-                        $detailsLink = Html::a('View Details',['purchase-requisition/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['purchase-requisition/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Fueling')
                     {
-                        $detailsLink = Html::a('View Details',['fuel/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['fuel/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'V_Booking')
                     {
-                        $detailsLink = Html::a('View Details',['vehiclerequisition/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['vehiclerequisition/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'V_Repair')
                     {
-                        $detailsLink = Html::a('View Details',['repair-requisition/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['repair-requisition/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Store_Requisition') {
                         # code...
-                        $detailsLink = Html::a('View Details',['storerequisition/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['storerequisition/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Leave_Application') {
                         # code...
-                        $detailsLink = Html::a('View Details',['leave/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['leave/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Leave_Plan') {
                         # code...
-                        $detailsLink = Html::a('View Details',['leaveplan/view','Plan_No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['leaveplan/view','Plan_No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Contract_Renewal') {
                         # code...
-                        $detailsLink = Html::a('View Details',['contractrenewal/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['contractrenewal/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Medical') {
                         # code...
-                        $detailsLink = Html::a('View Details',['medicalcover/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['medicalcover/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Leave_Allowance') {
                         # code...
-                        $detailsLink = Html::a('View Details',['leave-allowance/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['leave-allowance/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     else{
                         $detailsLink = '';
@@ -727,51 +750,51 @@ class ApprovalsController extends Controller
                     /*Card Details */
 
                     if($app->Document_Type == 'Staff_Board_Allowance'){
-                        $detailsLink = Html::a('View Details',['fund-requisition/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['fund-requisition/view','No'=> $app->Document_No,'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Imprest')
                     {
-                        $detailsLink = Html::a('View Details',['imprest/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['imprest/view','No'=> $app->Document_No,'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Salary_Advance')
                     {
-                        $detailsLink = Html::a('View Details',['salaryadvance/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['salaryadvance/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Requisition_Header')
                     {
-                        $detailsLink = Html::a('View Details',['purchase-requisition/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['purchase-requisition/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Fueling')
                     {
-                        $detailsLink = Html::a('View Details',['fuel/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['fuel/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'V_Booking')
                     {
-                        $detailsLink = Html::a('View Details',['vehiclerequisition/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['vehiclerequisition/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'V_Repair')
                     {
-                        $detailsLink = Html::a('View Details',['repair-requisition/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['repair-requisition/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Store_Requisition') {
                         # code...
-                        $detailsLink = Html::a('View Details',['storerequisition/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['storerequisition/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Leave_Application') {
                         # code...
-                        $detailsLink = Html::a('View Details',['leave/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['leave/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Leave_Plan') {
                         # code...
-                        $detailsLink = Html::a('View Details',['leaveplan/view','Plan_No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['leaveplan/view','Plan_No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Contract_Renewal') {
                         # code...
-                        $detailsLink = Html::a('View Details',['contractrenewal/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['contractrenewal/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     elseif ($app->Document_Type == 'Medical') {
                         # code...
-                        $detailsLink = Html::a('View Details',['medicalcover/view','No'=> $app->Document_No ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
+                        $detailsLink = Html::a('View Details',['medicalcover/view','No'=> $app->Document_No, 'Approval'=> true ],['class'=>'btn btn-outline-info btn-xs','target' => '_blank']);
                     }
                     else{
                         $detailsLink = '';
@@ -909,6 +932,10 @@ class ApprovalsController extends Controller
             elseif($docType == 'Leave_Allowance')
             {
                 $result = Yii::$app->navhelper->PortalWorkFlows($service,$data,'IanRejectLeaveAllowance');
+            }
+            elseif($docType == 'Leave_Plan')
+            {
+                $result = Yii::$app->navhelper->PortalWorkFlows($service,$data,'IanRejectLeavePlan');
             }
             else
             {
