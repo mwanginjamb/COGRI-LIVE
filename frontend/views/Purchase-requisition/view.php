@@ -160,8 +160,9 @@ if(Yii::$app->session->hasFlash('success')){
                                     <td><b>Shade</b></td>
                                     <td><b>Institution</b></td>
 
-
-                                    <td><b>Action</b></td>
+                                    <?php if($model->Status == 'New'): ?>
+                                     <td><b>Action</b></td>
+                                    <?php endif; ?>
 
                                 </tr>
                                 </thead>
@@ -190,7 +191,10 @@ if(Yii::$app->session->hasFlash('success')){
                                         <td><?= !empty($obj->ShortcutDimCode_x005B_5_x005D_)?$obj->ShortcutDimCode_x005B_5_x005D_:'Not Set' ?></td>
 
                                         <td><?= !empty($obj->Institution_Name)?$obj->Institution_Name:'Not Set' ?></td>
+
+                                        <?php if($model->Status == 'New'): ?>
                                         <td><?= $updateLink.'|'.$deleteLink ?></td>
+                                        <?php endif; ?>
 
                                     </tr>
                                 <?php endforeach; ?>

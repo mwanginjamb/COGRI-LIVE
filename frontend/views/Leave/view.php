@@ -107,8 +107,8 @@ Yii::$app->session->set('isSupervisor',false);*/
                                 <?= $form->field($model, 'Application_Date')->textInput(['required' => true, 'disabled'=>true]) ?>
                                 <?= $form->field($model, 'User_ID')->textInput(['required' => true, 'disabled'=>true]) ?>
                                 <?= $form->field($model, 'Leave_Code')->textInput(['readonly' => true]) ?>
-                                <?= $form->field($model, 'Start_Date')->textInput(['type' => 'date','required' => true]) ?>
-                                <?= $form->field($model, 'Days_To_Go_on_Leave')->textInput(['type' => 'number','required' =>  true,'min'=> 1]) ?>
+                                <?= $form->field($model, 'Start_Date')->textInput(['type' => 'date','required' => true, 'readonly'=> true]) ?>
+                                <?= $form->field($model, 'Days_To_Go_on_Leave')->textInput(['type' => 'number','required' =>  true,'min'=> 1, 'readonly'=> true]) ?>
                                 <?= $form->field($model, 'End_Date')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
                                 <?= $form->field($model, 'Total_No_Of_Days')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
                                 <?= $form->field($model, 'Leave_balance')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
