@@ -41,10 +41,11 @@ return [
             'useFileTransport' => false,
              'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'mail.nyumbani.org',
-                'username' => 'erp@nyumbani.org',
-                'password' => '@ERP2020.',
-                'port' => '465',
+                'host' => env('SMTPSERVER'),
+                'username' => env('SMTPUSER'),
+                'password' => env('SMTPPWD'),
+                'port' => env('PORT'),
+                'encryption' => env('ENCRYPTION'),
 
             ],
         ],
