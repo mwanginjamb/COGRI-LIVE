@@ -856,12 +856,12 @@ $employee = (!Yii::$app->user->isGuest && is_array(Yii::$app->user->identity->em
                             <ul class="nav nav-treeview">
 
 
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a href="<?= $absoluteUrl ?>overtime/create" class="nav-link <?= Yii::$app->recruitment->currentaction('overtime','create')?'active':'' ?>">
                                         <i class="fa fa-check-square nav-icon"></i>
                                         <p> New Requisition</p>
                                     </a>
-                                </li>
+                                </li> -->
 
                                 <li class="nav-item">
                                     <a href="<?= $absoluteUrl ?>overtime" class="nav-link <?= Yii::$app->recruitment->currentaction('overtime','index')?'active':'' ?>">

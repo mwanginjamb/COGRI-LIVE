@@ -66,7 +66,7 @@ $absoluteUrl = \yii\helpers\Url::home(true);
                             <?= $form->field($model, 'Reliever')->dropDownList($employees,['prompt' => 'Select ..','required'=> true]) ?>
                             <?= $form->field($model, 'Comments')->textarea(['rows'=> 2,'maxlength' => 250]) ?>
 
-                             <?= $form->field($model, 'Include_Leave_Allowance')->dropDownList([true => 'Yes',false => 'No'],['prompt' => 'Select ...']) ?>
+                             <?php $form->field($model, 'Include_Leave_Allowance')->dropDownList([true => 'Yes',false => 'No'],['prompt' => 'Select ...']) ?>
 
 
                         </div>

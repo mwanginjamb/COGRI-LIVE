@@ -19,8 +19,8 @@ $url = \yii\helpers\Url::home(true);
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-        <?= \yii\helpers\Html::a('New Overtime Request',['create'],['class' => 'btn btn-info push-right', 'data' => [
-            'confirm' => 'Are you sure you want to create a new Overtime Request?',
+        <?= \yii\helpers\Html::a('New Overtime Document',['create'],['class' => 'btn btn-info push-right', 'data' => [
+            'confirm' => 'Are you sure you want to create a new Document?',
             'method' => 'get',
         ],]) ?>
             </div>
@@ -52,11 +52,6 @@ if(Yii::$app->session->hasFlash('success')){
             <div class="card-header">
                 <h3 class="card-title">Overtime List</h3>
 
-
-
-
-
-
             </div>
             <div class="card-body">
                 <table class="table table-bordered dt-responsive table-hover" id="table">
@@ -74,29 +69,24 @@ $script = <<<JS
     $(function(){
          /*Data Tables*/
          
-          $.fn.dataTable.ext.errMode = 'throw';
+         // $.fn.dataTable.ext.errMode = 'throw';
         const url = $('#url').val();
     
           $('#table').DataTable({
            
             //serverSide: true,  
-            ajax: url+'overtime/overtime-list',
+            ajax: url+'overtime/list',
             paging: true,
             columns: [
                 { title: 'No' ,data: 'No'},
                 { title: 'Employee No' ,data: 'Employee_No'},
-                { title: 'Employee Name' ,data: 'Employee_Name'},
-                { title: 'Start Time' ,data: 'Start_Time'},
-                { title: 'End Time' ,data: 'End_Time'},
-                { title: 'Date' ,data: 'Date'},
+                { title: 'Employee Name' ,data: 'Employee_Name'},             
                 { title: 'Status' ,data: 'Status'},
                 { title: 'Action', data: 'Action' },
-                { title: 'Update Action', data: 'Update_Action' },
-                { title: 'Details', data: 'view' },
-               
+                               
             ] ,                              
            language: {
-                "zeroRecords": "No Overtimes to display"
+                "zeroRecords": "No Overtime records to display"
             },
             
             order : [[ 0, "desc" ]]

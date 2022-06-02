@@ -18,14 +18,11 @@ $absoluteUrl = \yii\helpers\Url::home(true);
             </div>
             <div class="card-body">
 
-
-
         <?php
 
             $form = ActiveForm::begin([
                     // 'id' => $model->formName()
             ]);
-
 
 
 
@@ -39,71 +36,39 @@ $absoluteUrl = \yii\helpers\Url::home(true);
         }else if(Yii::$app->session->hasFlash('error')){
             print ' <div class="alert alert-danger alert-dismissable">
                                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                    <h5><i class="icon fas fa-check"></i> Error!</h5>
+                                    <h5><i class="icon fas fa-times"></i> Error!</h5>
                                 ';
             echo Yii::$app->session->getFlash('error');
             print '</div>';
         }
 
 
-
             ?>
                 <div class="row">
                     <div class="row col-md-12">
 
+
+
                         <div class="col-md-6">
-                            <?= $form->field($model, 'No')->textInput(['readonly'=> true]) ?>
+
+                            <?= $form->field($model, 'No')->textInput(['readonly' => true]) ?>
                             <?= $form->field($model, 'Key')->hiddenInput()->label(false) ?>
-                            <?= '<p><span>Employee No:</span> '.Html::a($model->Employee_Name,'#'); '</p>' ?>
+                            <?= $form->field($model, 'Employee_No')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
+                            <?= $form->field($model, 'Employee_Name')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
+
                         </div>
 
                         <div class="col-md-6">
-                            <?= $form->field($model, 'Global_Dimension_1_Code')->dropDownList($programs,['prompt' => 'Select ..']) ?>
-                            <?= $form->field($model, 'Global_Dimension_2_Code')->dropDownList($departments, ['prompt' => 'select ...']) ?>
+                            <?= $form->field($model, 'Global_Dimension_1_Code')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
+                            <?= $form->field($model, 'Global_Dimension_2_Code')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
+                            <?= $form->field($model, 'Hours_Worked')->textInput(['readonly'=> true, 'disabled'=>true]) ?>
+
+
                         </div>
 
                     </div>
 
                 </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Overtime Details</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="row col-md-12">
-
-                                <div class="col-md-6">
-                                    <?= $form->field($model, 'Start_Time')->textInput(['type'=> 'time','required' => 'true']) ?>
-                                    <?= $form->field($model, 'End_Time')->textInput(['type'=> 'time','required' => 'true']) ?>
-                                    <?= $form->field($model, 'Date')->textInput(['type'=> 'date','required' => 'true']) ?>
-                                    <?= $form->field($model, 'Hours_Worked')->textInput(['readonly'=> true,'disabled' => 'true']) ?>
-
-                                </div>
-
-                                <div class="col-md-6">
-                                    <?= $form->field($model, 'Working_Hours')->textInput(['readonly'=> true,'disabled' => 'true']) ?>
-                                    <?= $form->field($model, 'Status')->textInput(['readonly'=> true,'disabled' => 'true']) ?>
-                                    <?= $form->field($model, 'Reason')->textarea(['rows'=> 3,'required' => true]) ?>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
                 <div class="row">
@@ -165,24 +130,26 @@ $script = <<<JS
 
         // Set other Employee
         
-     $('#overtime-start_time').blur(function(e){
-        const Start_Time = e.target.value;
-        const No = $('#overtime-no').val();
+     $('#salaryincrement-new_pointer').change(function(e){
+        const New_Pointer = e.target.value;
+        const No = $('#salaryincrement-no').val();
+        const New_Grade = $('#salaryincrement-new_grade').val();
         if(No.length){
-            const url = $('input[name=url]').val()+'overtime/setstarttime';
-            $.post(url,{'Start_Time': Start_Time,'No': No}).done(function(msg){
+            const url = $('input[name=url]').val()+'salary-increment/set-grade';
+            $.post(url,{'New_Pointer': New_Pointer,'No': No, 'New_Grade': New_Grade}).done(function(msg){
                    //populate empty form fields with new data
-                  
-                   $('#overtime-key').val(msg.Key);
+                   
+                   $('#salaryincrement-new_salary_grade').val(msg.New_Salary_Grade);
+                   $('#salaryincrement-key').val(msg.Key);
                     console.log(typeof msg);
                     console.table(msg);
                     if((typeof msg) === 'string') { // A string is an error
-                        const parent = document.querySelector('.field-overtime-start_time');
+                        const parent = document.querySelector('.field-salaryincrement-new_pointer');
                         const helpbBlock = parent.children[2];
                         helpbBlock.innerText = msg;
                         
                     }else{ // An object represents correct details
-                        const parent = document.querySelector('.field-overtime-start_time');
+                        const parent = document.querySelector('.field-salaryincrement-new_pointer');
                         const helpbBlock = parent.children[2];
                         helpbBlock.innerText = ''; 
                         
@@ -194,25 +161,25 @@ $script = <<<JS
      
      /*Set Program and Department dimension */
      
-     $('#overtime-end_time').blur(function(e){
-        const End_Time = e.target.value;
-        const No = $('#overtime-no').val();
+     $('#salaryadvance-amount_requested').blur(function(e){
+        const amount = e.target.value;
+        const No = $('#salaryadvance-no').val();
         if(No.length){
-            const url = $('input[name=url]').val()+'overtime/setendtime';
-            $.post(url,{'End_Time': End_Time,'No': No}).done(function(msg){
+            const url = $('input[name=url]').val()+'salaryadvance/setamount';
+            $.post(url,{'amount': amount,'No': No}).done(function(msg){
                    //populate empty form fields with new data
-                   $('#overtime-key').val(msg.Key);
-                   $('#overtime-hours_worked').val(msg.Hours_Worked);
+                   $('#salaryadvance-take_home').val(msg.Take_Home);
+                   $('#salaryadvance-key').val(msg.Key);
                    
                     console.log(typeof msg);
                     console.table(msg);
                     if((typeof msg) === 'string') { // A string is an error
-                        const parent = document.querySelector('.field-overtime-end_time');
+                        const parent = document.querySelector('.field-imprestcard-global_dimension_1_code');
                         const helpbBlock = parent.children[2];
                         helpbBlock.innerText = msg;
                         
                     }else{ // An object represents correct details
-                        const parent = document.querySelector('.field-overtime-end_time');
+                        const parent = document.querySelector('.field-imprestcard-global_dimension_1_code');
                         const helpbBlock = parent.children[2];
                         helpbBlock.innerText = ''; 
                         

@@ -11,9 +11,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\AgendaDocument */
 
-$this->title = 'Overtime Application';
-$this->params['breadcrumbs'][] = ['label' => 'Overtime List', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => 'New Request', 'url' => ['create']];
+$this->title = 'Overtime Document';
+$this->params['breadcrumbs'][] = ['label' => 'Overtime Documents', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'New Overtime Document', 'url' => ['create']];
 //$this->params['breadcrumbs'][] = $this->title;
 
 $model->isNewRecord = true;
@@ -26,6 +26,10 @@ $model->isNewRecord = true;
         'model' => $model,
         'programs' => $programs,
         'departments' => $departments,
+        'grades' => $grades,
+
+
+
     ]) ?>
 
 </div>

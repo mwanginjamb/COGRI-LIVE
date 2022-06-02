@@ -120,6 +120,7 @@ return [
 
         'OvertimeList' => 'OvertimeList', //50037
         'OvertimeCard' => 'OvertimeCard', //50038
+        'OvertimeLine' => 'OvertimeLine', // 55027
 
         /**************************Medical Cover *************************************/
 

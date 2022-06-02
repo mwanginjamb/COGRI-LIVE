@@ -11,12 +11,10 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\AgendaDocument */
-$this->params['breadcrumbs'][] = ['label' => 'Overtime List', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => 'New Request', 'url' => ['create']];
-$this->title = 'Update Salary Advance Application';
-$model->Start_Time = date('h:i:s', strtotime($model->Start_Time));
-$model->End_Time = date('h:i:s', strtotime($model->End_Time));
-$model->Date = date('m-d-Y', strtotime($model->Date));
+$this->params['breadcrumbs'][] = ['label' => 'Overtime Document', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Update Request', 'url' => ['update','No' => $model->No]];
+$this->title = 'Update Store Requisition';
+
 ?>
 <div class="agenda-document-update">
 
@@ -25,7 +23,8 @@ $model->Date = date('m-d-Y', strtotime($model->Date));
     <?= $this->render('_form',[
         'model' => $model,
         'programs' => $programs,
-        'departments' => $departments
+        'departments' => $departments,
+        'grades' => $grades
     ]) ?>
 
 </div>

@@ -21,14 +21,10 @@ public $Employee_No;
 public $Employee_Name;
 public $Global_Dimension_1_Code;
 public $Global_Dimension_2_Code;
-public $Start_Time;
-public $End_Time;
-public $Date;
 public $Hours_Worked;
-public $Working_Hours;
 public $Status;
-public $Reason;
 public $isNewRecord;
+public $Rejection_Comments;
 
     /*public function __construct(array $config = [])
     {
@@ -45,15 +41,15 @@ public $isNewRecord;
     public function attributeLabels()
     {
         return [
-            'Global_Dimension_1_Code' => 'Program',
-            'Global_Dimension_2_Code' => 'Department',
+            'Global_Dimension_1_Code' => 'Department Code',
+            'Global_Dimension_2_Code' => 'Project Code',
         ];
     }
 
-    public function getLines($No){
-        $service = Yii::$app->params['ServiceName']['ImprestRequestLine'];
+    public function getLines(){
+        $service = Yii::$app->params['ServiceName']['OvertimeLine'];
         $filter = [
-            'Request_No' => $No,
+            'Application_No' => $this->No,
         ];
 
         $lines = Yii::$app->navhelper->getData($service, $filter);
